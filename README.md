@@ -85,7 +85,7 @@ npm run check
 npm run commit:check
 git add <対象ファイル>
 git diff --cached
-git commit -m "変更内容"
+git commit -m "feat: Todo作成APIを追加"
 ```
 
 ## AI開発ツール
@@ -100,8 +100,9 @@ Claude CodeとCursor向けに、共通の開発手順とコマンドを用意し
 - 共通コマンド: `/check`、`/commit [コミット内容]`
 
 各ツール固有のSkillsディレクトリは、`.agents/skills`へのシンボリックリンクです。
-`/commit`は差分確認、検証、ステージング、日本語メッセージでのコミットまでを実行し、
-pushは行いません。
+`/commit`は差分確認、検証、ステージング、Conventional Commits形式の日本語メッセージ
+でのコミットまでを実行し、pushは行いません。コミットメッセージの詳細は
+`AGENTS.md`を参照してください。
 
 ## ファイル構成
 
