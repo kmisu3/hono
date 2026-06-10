@@ -1,5 +1,5 @@
 name: 保守・リファクタリング
-description: 信頼性、保守性、依存関係、ツール、開発者体験などを改善します。
+description: 信頼性、保守性、依存関係、ツール、開発者体験の改善。
 title: "[保守]: "
 labels: ["type:maintenance", "status:triage"]
 body:

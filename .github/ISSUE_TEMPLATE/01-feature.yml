@@ -1,5 +1,5 @@
 name: 機能追加・改善
-description: 新しい機能や、既存機能の改善を提案します。
+description: 新機能や既存機能の改善提案。
 title: "[機能]: "
 labels: ["type:feature", "status:triage"]
 body:

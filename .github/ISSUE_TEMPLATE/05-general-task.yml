@@ -1,5 +1,5 @@
-name: 一般・非コードタスク
-description: 調査、ドキュメント、運用、調整など、実装以外を含む作業を管理します。
+name: その他のタスク
+description: 調査、ドキュメント、運用、調整などの作業管理。
 title: "[タスク]: "
 labels: ["type:task", "status:triage"]
 body:

@@ -1,5 +1,5 @@
 name: 設計・アーキテクチャ検討
-description: API、アーキテクチャ、データモデル、技術方針などを検討し、意思決定します。
+description: API、アーキテクチャ、データモデル、技術方針の検討・意思決定。
 title: "[設計]: "
 labels: ["type:design", "status:triage"]
 body:
