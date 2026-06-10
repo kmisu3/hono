@@ -9,9 +9,7 @@ body:
       label: 起票前の確認
       options:
         - label: 同じ問題が既存Issueにないことを確認済み
-          required: true
         - label: ログや例から秘密情報・機密情報を削除済み
-          required: true
   - type: textarea
     id: current_behavior
     attributes:
@@ -24,8 +22,6 @@ body:
     attributes:
       label: 期待する動作
       description: 本来想定される動作の記載。
-    validations:
-      required: true
   - type: textarea
     id: reproduction
     attributes:
@@ -48,8 +44,6 @@ body:
         - パッケージマネージャー:
         - コミット/バージョン:
       render: markdown
-    validations:
-      required: true
   - type: textarea
     id: logs
     attributes:
@@ -66,5 +60,3 @@ body:
         - 重要な機能が利用できない
         - 影響が限定的、または回避策がある
         - 軽微、または見た目のみの問題
-    validations:
-      required: true

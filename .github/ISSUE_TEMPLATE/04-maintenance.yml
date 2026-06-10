@@ -15,8 +15,6 @@ body:
     attributes:
       label: 対象範囲
       description: 影響するシステムやファイル、予定している変更の記載。
-    validations:
-      required: true
   - type: textarea
     id: completion
     attributes:
@@ -24,15 +22,11 @@ body:
       placeholder: |
         - [ ] ...
         - [ ] ...
-    validations:
-      required: true
   - type: textarea
     id: risk
     attributes:
       label: リスク・互換性
       description: 動作変更、移行作業、ロールバック上の懸念、利用者への影響有無の記載。
-    validations:
-      required: true
   - type: textarea
     id: verification
     attributes:

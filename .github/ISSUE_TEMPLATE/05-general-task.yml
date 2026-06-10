@@ -14,8 +14,6 @@ body:
         - 調整・計画
         - リリース・周知
         - その他
-    validations:
-      required: true
   - type: textarea
     id: objective
     attributes:
@@ -30,8 +28,6 @@ body:
       placeholder: |
         - [ ] ...
         - [ ] ...
-    validations:
-      required: true
   - type: textarea
     id: approach
     attributes:

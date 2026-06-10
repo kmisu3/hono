@@ -20,8 +20,6 @@ body:
     attributes:
       label: 期待する成果
       description: 実装方法ではなく、実現後に確認できる成果の記載。
-    validations:
-      required: true
   - type: textarea
     id: acceptance
     attributes:
@@ -30,8 +28,6 @@ body:
       placeholder: |
         - [ ] ...
         - [ ] ...
-    validations:
-      required: true
   - type: textarea
     id: approach
     attributes:
