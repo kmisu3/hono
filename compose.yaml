@@ -7,9 +7,32 @@ services:
       - "${API_PORT:-8787}:3000"
     environment:
       PORT: "3000"
+      DATABASE_URL: "mysql://hono:hono@db:3306/hono"
+    depends_on:
+      db:
+        condition: service_healthy
     volumes:
       - .:/app
       - node_modules:/app/node_modules
+    command: sh -c "npm run db:migrate && npm run dev"
+
+  db:
+    image: mysql:8.4
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    environment:
+      MYSQL_DATABASE: hono
+      MYSQL_USER: hono
+      MYSQL_PASSWORD: hono
+      MYSQL_ROOT_PASSWORD: root
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - mysql_data:/var/lib/mysql
 
 volumes:
   node_modules:
+  mysql_data:

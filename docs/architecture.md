@@ -266,6 +266,9 @@ Repositoryを差し替える必要がある場合は、`createApp()`の引数か
 - 実装詳細ではなく、公開される振る舞いをテスト
 - RepositoryをモックしたServiceテストでは、業務ルールに必要な入出力だけを差し替える
 - ORMやHono自体の動作を再確認するだけのテストは作らない
+- DBを使うAPI・RepositoryテストではインメモリSQLiteを使用する
+- SQLiteを使うRepositoryテストは、厳密には単体テストではなく軽量な結合テストとして扱う
+- MySQL固有のSQL、型、制約、マイグレーションはMySQL環境で確認する
 
 ## Middleware
 

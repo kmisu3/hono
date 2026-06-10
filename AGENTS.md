@@ -12,17 +12,22 @@
 - 起動: `docker compose up --build`
 - テスト: `npm test`
 - ビルド: `npm run build`
+- Lint（Biome）: `npm run lint`（自動修正は`npm run lint:fix`）
 - 一括チェック: `npm run check`
 - 手動コミット前チェック: `npm run commit:check`
+- DB: 生成`npm run db:generate` / 適用`npm run db:migrate` / 投入`npm run db:seed`
+- よく使う操作はMakefileに集約（`make help`で一覧）
 
 ## 開発ルール
 
 - 変更は依頼されたタスクの範囲内に限定。
 - 動作を変更する場合はテストを追加・更新。
 - 業務ルールや純粋関数を追加・変更する場合は単体テストを追加・更新。
-- 外部入力はZodで検証。
+- 外部入力はZodで検証。環境変数は`src/shared/env.ts`で検証。
+- コードはBiomeのlint・整形に従う（`npm run lint`がCIでも実行される）。
 - ルートハンドラーとJSONレスポンスは簡潔で一貫した形を維持。
 - APIの構成・責務分離は`docs/architecture.md`に従う。
+- DBの実装・マイグレーション・テストは`docs/database.md`に従う。
 - 秘密情報、`.env`、生成された`dist/`、`node_modules/`はコミット対象外。
 - 明示的な依頼がない限り、pushとPull Request作成は実行対象外。
 

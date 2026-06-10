@@ -1,8 +1,10 @@
 import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
+import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
+import { secureHeaders } from 'hono/secure-headers'
 import { z } from 'zod'
-import { createTodo, type Todo, updateTodo } from './features/todos/todo.js'
+import type { TodoRepository } from './features/todos/repository.js'
 
 const createTodoSchema = z.object({
   title: z.string().trim().min(1).max(100),
@@ -13,18 +15,23 @@ const updateTodoSchema = z
     title: z.string().trim().min(1).max(100).optional(),
     completed: z.boolean().optional(),
   })
-  .refine((value) => value.title !== undefined || value.completed !== undefined, {
-    message: 'At least one field is required',
-  })
+  .refine(
+    (value) => value.title !== undefined || value.completed !== undefined,
+    {
+      message: 'At least one field is required',
+    },
+  )
 
-export const createApp = () => {
+const todoParamSchema = z.object({
+  id: z.coerce.number().int().positive(),
+})
+
+export const createApp = (todoRepository: TodoRepository) => {
   const app = new Hono()
-  const todos: Todo[] = [
-    { id: 1, title: 'Hono APIを開発する', completed: false },
-  ]
-  let nextId = 2
 
   app.use('*', logger())
+  app.use('*', secureHeaders())
+  app.use('/api/*', cors())
 
   app.get('/', (c) =>
     c.json({
@@ -35,47 +42,50 @@ export const createApp = () => {
 
   app.get('/health', (c) => c.json({ status: 'ok' }))
 
-  app.get('/api/todos', (c) => c.json({ data: todos }))
+  app.get('/api/todos', async (c) =>
+    c.json({ data: await todoRepository.findAll() }),
+  )
 
-  app.get('/api/todos/:id', (c) => {
-    const todo = todos.find((item) => item.id === Number(c.req.param('id')))
+  app.get('/api/todos/:id', zValidator('param', todoParamSchema), async (c) => {
+    const { id } = c.req.valid('param')
+    const todo = await todoRepository.findById(id)
     return todo
       ? c.json({ data: todo })
       : c.json({ error: 'Todo not found' }, 404)
   })
 
-  app.post('/api/todos', zValidator('json', createTodoSchema), (c) => {
+  app.post('/api/todos', zValidator('json', createTodoSchema), async (c) => {
     const input = c.req.valid('json')
-    const todo = createTodo(nextId++, input.title)
-    todos.push(todo)
+    const todo = await todoRepository.create(input.title)
     return c.json({ data: todo }, 201)
   })
 
-  app.patch('/api/todos/:id', zValidator('json', updateTodoSchema), (c) => {
-    const index = todos.findIndex(
-      (item) => item.id === Number(c.req.param('id')),
-    )
-    const todo = todos[index]
-    if (!todo) {
-      return c.json({ error: 'Todo not found' }, 404)
-    }
+  app.patch(
+    '/api/todos/:id',
+    zValidator('param', todoParamSchema),
+    zValidator('json', updateTodoSchema),
+    async (c) => {
+      const { id } = c.req.valid('param')
+      const todo = await todoRepository.update(id, c.req.valid('json'))
+      return todo
+        ? c.json({ data: todo })
+        : c.json({ error: 'Todo not found' }, 404)
+    },
+  )
 
-    const updated = updateTodo(todo, c.req.valid('json'))
-    todos[index] = updated
-    return c.json({ data: updated })
-  })
+  app.delete(
+    '/api/todos/:id',
+    zValidator('param', todoParamSchema),
+    async (c) => {
+      const { id } = c.req.valid('param')
+      const deleted = await todoRepository.delete(id)
+      if (!deleted) {
+        return c.json({ error: 'Todo not found' }, 404)
+      }
 
-  app.delete('/api/todos/:id', (c) => {
-    const index = todos.findIndex(
-      (item) => item.id === Number(c.req.param('id')),
-    )
-    if (index === -1) {
-      return c.json({ error: 'Todo not found' }, 404)
-    }
-
-    todos.splice(index, 1)
-    return c.body(null, 204)
-  })
+      return c.body(null, 204)
+    },
+  )
 
   app.notFound((c) => c.json({ error: 'Route not found' }, 404))
   app.onError((error, c) => {
