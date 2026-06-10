@@ -1,46 +1,35 @@
 name: その他のタスク
-description: 調査、ドキュメント、運用、調整などの作業管理。
+description: 調査、ドキュメント、運用、調整などの作業。
 title: "[タスク]: "
 labels: ["type:task", "status:triage"]
 body:
-  - type: dropdown
-    id: category
-    attributes:
-      label: カテゴリ
-      options:
-        - ドキュメント
-        - 調査・検証
-        - 運用
-        - 調整・計画
-        - リリース・周知
-        - その他
   - type: textarea
-    id: objective
+    id: summary
     attributes:
-      label: 目的
-      description: このタスクで得たい成果と、必要な理由の記載。
+      label: 概要
+      description: 対応したい内容。
     validations:
       required: true
   - type: textarea
-    id: deliverables
+    id: background
     attributes:
-      label: 成果物・完了条件
+      label: 背景・目的
+      description: 対応する理由や得たい成果。
+  - type: textarea
+    id: completion
+    attributes:
+      label: 完了条件
+      description: 完了と判断する条件。
       placeholder: |
         - [ ] ...
         - [ ] ...
   - type: textarea
-    id: approach
+    id: notes
     attributes:
-      label: 進め方の案
-      description: 必要な手順、制約、担当者、判断ポイントなどの記載。
+      label: 作業メモ
+      description: 進め方、担当、期限、注意点など。
   - type: textarea
-    id: dependencies
+    id: references
     attributes:
-      label: 依存関係・参考情報
-      description: 関連作業へのリンクや、このタスクを妨げる可能性がある事項の記載。
-  - type: input
-    id: target_date
-    attributes:
-      label: 目標日
-      description: 明確な期限がある場合のみ、YYYY-MM-DD形式で任意入力。
-      placeholder: YYYY-MM-DD
+      label: 参考情報
+      description: 関連Issue、資料、ドキュメントなど。

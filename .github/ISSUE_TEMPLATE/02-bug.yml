@@ -1,62 +1,41 @@
 name: 不具合対応
-description: 再現可能な不具合や想定外の動作への対応。
+description: 不具合や想定外の動作への対応。
 title: "[不具合]: "
 labels: ["type:bug", "status:triage"]
 body:
-  - type: checkboxes
-    id: checks
-    attributes:
-      label: 起票前の確認
-      options:
-        - label: 同じ問題が既存Issueにないことを確認済み
-        - label: ログや例から秘密情報・機密情報を削除済み
   - type: textarea
-    id: current_behavior
+    id: summary
     attributes:
-      label: 現在の動作
-      description: 発生した事象、影響範囲、発生頻度の記載。
+      label: 不具合の内容
+      description: 発生している事象と影響。
     validations:
       required: true
   - type: textarea
-    id: expected_behavior
+    id: expected
     attributes:
       label: 期待する動作
-      description: 本来想定される動作の記載。
+      description: 本来想定される動作。
   - type: textarea
     id: reproduction
     attributes:
-      label: 再現手順
-      description: 問題を確実に再現できる最小限の手順、または再現用コードの記載。
+      label: 再現方法
+      description: 再現手順、条件、再現用コードなど。
       placeholder: |
         1. ...
         2. ...
         3. ...
-    validations:
-      required: true
   - type: textarea
     id: environment
     attributes:
-      label: 実行環境
-      description: 関係するバージョンや設定の記載。
-      value: |
-        - OS:
-        - Node.js:
-        - パッケージマネージャー:
-        - コミット/バージョン:
-      render: markdown
+      label: 環境・ログ
+      description: 実行環境、バージョン、ログ、スクリーンショットなど。
   - type: textarea
-    id: logs
+    id: notes
     attributes:
-      label: ログ・補足情報
-      description: 関連するログ、スクリーンショット、リンクの記載。秘密情報は記載対象外。
-      render: shell
-  - type: dropdown
-    id: severity
+      label: 対応メモ
+      description: 原因の見立て、修正案、影響範囲、注意点など。
+  - type: textarea
+    id: references
     attributes:
-      label: 想定する深刻度
-      description: 起票時点で想定する深刻度。最終的な優先度はトリアージ時に決定。
-      options:
-        - 主要機能が利用不能、またはデータ・セキュリティ上のリスクがある
-        - 重要な機能が利用できない
-        - 影響が限定的、または回避策がある
-        - 軽微、または見た目のみの問題
+      label: 参考情報
+      description: 関連Issue、ドキュメントなど。

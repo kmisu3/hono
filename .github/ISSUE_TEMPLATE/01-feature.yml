@@ -1,5 +1,5 @@
 name: 新規実装・機能改善
-description: 新規機能の実装や既存機能の改善。
+description: 新規機能の実装、既存機能の変更・改善。
 title: "[機能]: "
 labels: ["type:feature", "status:triage"]
 body:
@@ -7,19 +7,19 @@ body:
     id: summary
     attributes:
       label: 概要
-      description: 実装・変更する内容の記載。
+      description: 実装・変更したい内容。
     validations:
       required: true
   - type: textarea
     id: background
     attributes:
       label: 背景・目的
-      description: 対応が必要な理由や、解決したい課題の記載。
+      description: 対応する理由や解決したい課題。
   - type: textarea
     id: completion
     attributes:
       label: 完了条件
-      description: 対応完了と判断できる条件の記載。
+      description: 完了と判断する条件。
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -27,9 +27,9 @@ body:
     id: approach
     attributes:
       label: 実装メモ
-      description: 実装案、API例、対象範囲、注意点などの任意記載。
+      description: 実装案、API例、対象範囲、注意点など。
   - type: textarea
     id: references
     attributes:
       label: 参考情報
-      description: 関連Issue、設計資料、ドキュメントなどの記載。
+      description: 関連Issue、設計資料、ドキュメントなど。

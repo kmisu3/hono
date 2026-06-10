@@ -1,39 +1,35 @@
 name: 保守・リファクタリング
-description: 信頼性、保守性、依存関係、ツール、開発者体験の改善。
+description: コード、依存関係、ツール、開発環境などの保守・改善。
 title: "[保守]: "
 labels: ["type:maintenance", "status:triage"]
 body:
   - type: textarea
-    id: motivation
+    id: summary
     attributes:
-      label: 対応理由
-      description: この作業によって軽減する問題、リスク、継続的コストの記載。
+      label: 概要
+      description: 対応したい内容。
     validations:
       required: true
   - type: textarea
-    id: scope
+    id: background
     attributes:
-      label: 対象範囲
-      description: 影響するシステムやファイル、予定している変更の記載。
+      label: 背景・目的
+      description: 対応する理由や解消したい問題。
   - type: textarea
     id: completion
     attributes:
       label: 完了条件
+      description: 完了と判断する条件。
       placeholder: |
         - [ ] ...
         - [ ] ...
   - type: textarea
-    id: risk
+    id: notes
     attributes:
-      label: リスク・互換性
-      description: 動作変更、移行作業、ロールバック上の懸念、利用者への影響有無の記載。
-  - type: textarea
-    id: verification
-    attributes:
-      label: 検証方法
-      description: 変更内容の検証方法。
+      label: 対応メモ
+      description: 対象範囲、対応案、影響、注意点など。
   - type: textarea
     id: references
     attributes:
-      label: 依存関係・参考情報
-      description: 関連Issue、依存関係の通知、指標、ドキュメントなどの記載。
+      label: 参考情報
+      description: 関連Issue、指標、ドキュメントなど。
