@@ -1,51 +1,35 @@
-name: 機能追加・改善
-description: 新機能や既存機能の改善提案。
+name: 新規実装・機能改善
+description: 新規機能の実装や既存機能の改善。
 title: "[機能]: "
 labels: ["type:feature", "status:triage"]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        解決策より先に、利用者が抱えている課題を整理。成果が明確で適切な大きさのIssueは、優先順位付けと実装が容易。
   - type: textarea
-    id: problem
+    id: summary
     attributes:
-      label: 解決したい課題・改善機会
-      description: 誰が抱えている課題か、解決によって得られる価値は何か。
-      placeholder: 〇〇として、△△したい。なぜなら□□だから。
+      label: 概要
+      description: 実装・変更する内容の記載。
     validations:
       required: true
   - type: textarea
-    id: outcome
+    id: background
     attributes:
-      label: 期待する成果
-      description: 実装方法ではなく、実現後に確認できる成果の記載。
+      label: 背景・目的
+      description: 対応が必要な理由や、解決したい課題の記載。
   - type: textarea
-    id: acceptance
+    id: completion
     attributes:
-      label: 受け入れ条件
-      description: このIssueを完了と判断できる条件の記載。
+      label: 完了条件
+      description: 対応完了と判断できる条件の記載。
       placeholder: |
         - [ ] ...
         - [ ] ...
   - type: textarea
     id: approach
     attributes:
-      label: 実現方法の案
-      description: 実装案、API例、検討した代替案などの任意記載。
+      label: 実装メモ
+      description: 実装案、API例、対象範囲、注意点などの任意記載。
   - type: textarea
-    id: scope
+    id: references
     attributes:
-      label: 対象範囲・対象外
-      description: 対応に含める内容と、意図的に含めない内容の明確化。
-      placeholder: |
-        対象:
-        - ...
-
-        対象外:
-        - ...
-  - type: textarea
-    id: dependencies
-    attributes:
-      label: 依存関係・参考情報
-      description: 関連Issue、設計資料、ドキュメント、外部資料などの記載。
+      label: 参考情報
+      description: 関連Issue、設計資料、ドキュメントなどの記載。
