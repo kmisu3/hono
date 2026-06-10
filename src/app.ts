@@ -2,12 +2,7 @@ import { zValidator } from '@hono/zod-validator'
 import { Hono } from 'hono'
 import { logger } from 'hono/logger'
 import { z } from 'zod'
-
-type Todo = {
-  id: number
-  title: string
-  completed: boolean
-}
+import { createTodo, type Todo, updateTodo } from './features/todos/todo.js'
 
 const createTodoSchema = z.object({
   title: z.string().trim().min(1).max(100),
@@ -51,19 +46,23 @@ export const createApp = () => {
 
   app.post('/api/todos', zValidator('json', createTodoSchema), (c) => {
     const input = c.req.valid('json')
-    const todo: Todo = { id: nextId++, title: input.title, completed: false }
+    const todo = createTodo(nextId++, input.title)
     todos.push(todo)
     return c.json({ data: todo }, 201)
   })
 
   app.patch('/api/todos/:id', zValidator('json', updateTodoSchema), (c) => {
-    const todo = todos.find((item) => item.id === Number(c.req.param('id')))
+    const index = todos.findIndex(
+      (item) => item.id === Number(c.req.param('id')),
+    )
+    const todo = todos[index]
     if (!todo) {
       return c.json({ error: 'Todo not found' }, 404)
     }
 
-    Object.assign(todo, c.req.valid('json'))
-    return c.json({ data: todo })
+    const updated = updateTodo(todo, c.req.valid('json'))
+    todos[index] = updated
+    return c.json({ data: updated })
   })
 
   app.delete('/api/todos/:id', (c) => {
