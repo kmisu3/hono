@@ -15,58 +15,62 @@ describe('Todo API', () => {
 
   afterEach(() => close())
 
-  it('returns a health response', async () => {
-    const response = await createApp(repository).request('/health')
+  describe('正常系', () => {
+    it('ヘルスチェックが200を返すこと', async () => {
+      const response = await createApp(repository).request('/health')
 
-    expect(response.status).toBe(200)
-    expect(await response.json()).toEqual({ status: 'ok' })
-  })
-
-  it('creates and fetches a todo', async () => {
-    const app = createApp(repository)
-    const createResponse = await app.request('/api/todos', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ title: 'APIを開発する' }),
+      expect(response.status).toBe(200)
+      expect(await response.json()).toEqual({ status: 'ok' })
     })
 
-    expect(createResponse.status).toBe(201)
+    it('Todoが作成され一覧に表示されること', async () => {
+      const app = createApp(repository)
+      const createResponse = await app.request('/api/todos', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ title: 'APIを開発する' }),
+      })
 
-    const listResponse = await app.request('/api/todos')
-    const body = await listResponse.json()
+      expect(createResponse.status).toBe(201)
 
-    expect(body.data).toHaveLength(1)
-    expect(body.data[0].title).toBe('APIを開発する')
-  })
+      const listResponse = await app.request('/api/todos')
+      const body = await listResponse.json()
 
-  it('rejects an empty title', async () => {
-    const response = await createApp(repository).request('/api/todos', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ title: '' }),
+      expect(body.data).toHaveLength(1)
+      expect(body.data[0].title).toBe('APIを開発する')
     })
 
-    expect(response.status).toBe(400)
+    it('値が変わらない更新でもTodoが返ること', async () => {
+      const app = createApp(repository)
+      const created = await repository.create('値を変えずに更新する')
+
+      const response = await app.request(`/api/todos/${created.id}`, {
+        method: 'PATCH',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ completed: false }),
+      })
+
+      expect(response.status).toBe(200)
+      const body = await response.json()
+      expect(body.data).toEqual(created)
+    })
   })
 
-  it('rejects a non-numeric id', async () => {
-    const response = await createApp(repository).request('/api/todos/abc')
+  describe('異常系', () => {
+    it('空タイトルが拒否されること', async () => {
+      const response = await createApp(repository).request('/api/todos', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ title: '' }),
+      })
 
-    expect(response.status).toBe(400)
-  })
-
-  it('keeps the todo when an update does not change values', async () => {
-    const app = createApp(repository)
-    const created = await repository.create('値を変えずに更新する')
-
-    const response = await app.request(`/api/todos/${created.id}`, {
-      method: 'PATCH',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ completed: false }),
+      expect(response.status).toBe(400)
     })
 
-    expect(response.status).toBe(200)
-    const body = await response.json()
-    expect(body.data).toEqual(created)
+    it('数値でないIDが拒否されること', async () => {
+      const response = await createApp(repository).request('/api/todos/abc')
+
+      expect(response.status).toBe(400)
+    })
   })
 })

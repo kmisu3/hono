@@ -14,24 +14,26 @@ describe('SQLite TodoRepository', () => {
 
   afterEach(() => close())
 
-  it('Todoを作成して取得する', async () => {
-    const created = await repository.create('SQLiteでテストする')
+  describe('正常系', () => {
+    it('Todoが作成・取得できること', async () => {
+      const created = await repository.create('SQLiteでテストする')
 
-    expect(await repository.findById(created.id)).toEqual(created)
-  })
+      expect(await repository.findById(created.id)).toEqual(created)
+    })
 
-  it('Todoを更新する', async () => {
-    const created = await repository.create('SQLiteでテストする')
+    it('Todoが更新されること', async () => {
+      const created = await repository.create('SQLiteでテストする')
 
-    const updated = await repository.update(created.id, { completed: true })
+      const updated = await repository.update(created.id, { completed: true })
 
-    expect(updated?.completed).toBe(true)
-  })
+      expect(updated?.completed).toBe(true)
+    })
 
-  it('Todoを削除する', async () => {
-    const created = await repository.create('SQLiteでテストする')
+    it('Todoが削除されること', async () => {
+      const created = await repository.create('SQLiteでテストする')
 
-    expect(await repository.delete(created.id)).toBe(true)
-    expect(await repository.findById(created.id)).toBeUndefined()
+      expect(await repository.delete(created.id)).toBe(true)
+      expect(await repository.findById(created.id)).toBeUndefined()
+    })
   })
 })
