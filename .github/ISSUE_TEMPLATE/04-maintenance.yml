@@ -7,14 +7,14 @@ body:
     id: motivation
     attributes:
       label: 対応理由
-      description: この作業によって、どのような問題、リスク、継続的コストを減らしますか？
+      description: この作業によって軽減する問題、リスク、継続的コストの記載。
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
       label: 対象範囲
-      description: 影響するシステムやファイル、予定している変更を記載してください。
+      description: 影響するシステムやファイル、予定している変更の記載。
     validations:
       required: true
   - type: textarea
@@ -30,16 +30,16 @@ body:
     id: risk
     attributes:
       label: リスク・互換性
-      description: 動作変更、移行作業、ロールバック上の懸念、または利用者への影響がない理由を記載してください。
+      description: 動作変更、移行作業、ロールバック上の懸念、利用者への影響有無の記載。
     validations:
       required: true
   - type: textarea
     id: verification
     attributes:
       label: 検証方法
-      description: 変更内容をどのように検証するか記載してください。
+      description: 変更内容の検証方法。
   - type: textarea
     id: references
     attributes:
       label: 依存関係・参考情報
-      description: 関連Issue、依存関係の通知、指標、ドキュメントなどを記載してください。
+      description: 関連Issue、依存関係の通知、指標、ドキュメントなどの記載。

@@ -1,36 +1,36 @@
-name: 不具合報告
-description: 再現可能な不具合や想定外の動作報告。
+name: 不具合対応
+description: 再現可能な不具合や想定外の動作への対応。
 title: "[不具合]: "
 labels: ["type:bug", "status:triage"]
 body:
   - type: checkboxes
     id: checks
     attributes:
-      label: 報告前の確認
+      label: 起票前の確認
       options:
-        - label: 同じ問題が既存Issueにないことを確認しました。
+        - label: 同じ問題が既存Issueにないことを確認済み
           required: true
-        - label: ログや例から秘密情報・機密情報を削除しました。
+        - label: ログや例から秘密情報・機密情報を削除済み
           required: true
   - type: textarea
     id: current_behavior
     attributes:
       label: 現在の動作
-      description: 何が起きましたか？分かる範囲で影響範囲や発生頻度も記載してください。
+      description: 発生した事象、影響範囲、発生頻度の記載。
     validations:
       required: true
   - type: textarea
     id: expected_behavior
     attributes:
       label: 期待する動作
-      description: 本来はどのように動作するべきですか？
+      description: 本来想定される動作の記載。
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
       label: 再現手順
-      description: 問題を確実に再現できる最小限の手順、または再現用コードを記載してください。
+      description: 問題を確実に再現できる最小限の手順、または再現用コードの記載。
       placeholder: |
         1. ...
         2. ...
@@ -41,7 +41,7 @@ body:
     id: environment
     attributes:
       label: 実行環境
-      description: 関係するバージョンや設定を記載してください。
+      description: 関係するバージョンや設定の記載。
       value: |
         - OS:
         - Node.js:
@@ -54,13 +54,13 @@ body:
     id: logs
     attributes:
       label: ログ・補足情報
-      description: 関連するログ、スクリーンショット、リンクを記載してください。秘密情報は含めないでください。
+      description: 関連するログ、スクリーンショット、リンクの記載。秘密情報は記載対象外。
       render: shell
   - type: dropdown
     id: severity
     attributes:
       label: 想定する深刻度
-      description: 最終的な優先度はトリアージ時に確認します。
+      description: 起票時点で想定する深刻度。最終的な優先度はトリアージ時に決定。
       options:
         - 主要機能が利用不能、またはデータ・セキュリティ上のリスクがある
         - 重要な機能が利用できない

@@ -7,14 +7,14 @@ body:
     id: context
     attributes:
       label: 背景
-      description: 現在の状況、制約、意思決定が必要な理由を説明してください。
+      description: 現在の状況、制約、意思決定が必要な理由の記載。
     validations:
       required: true
   - type: textarea
     id: decision
     attributes:
       label: 決定すること
-      description: この設計タスクで答えを出すべき問いを明確にしてください。
+      description: この設計タスクで答えを出すべき問いの明確化。
     validations:
       required: true
   - type: textarea
@@ -32,14 +32,14 @@ body:
     id: options
     attributes:
       label: 選択肢・トレードオフ
-      description: 実現可能な選択肢について、コスト、リスク、不採用案を含めて比較してください。
+      description: 実現可能な選択肢について、コスト、リスク、不採用案を含めた比較。
     validations:
       required: true
   - type: textarea
     id: deliverables
     attributes:
       label: 成果物・完了条件
-      description: ADR、プロトタイプ、実装計画など、このタスクの完了条件を定義してください。
+      description: ADR、プロトタイプ、実装計画など、このタスクの完了条件の定義。
       placeholder: |
         - [ ] 決定事項を記録した
         - [ ] 後続の実装Issueを作成した
@@ -49,4 +49,4 @@ body:
     id: references
     attributes:
       label: 参考情報
-      description: 関連Issue、図、検証結果、外部ドキュメントなどを記載してください。
+      description: 関連Issue、図、検証結果、外部ドキュメントなどの記載。

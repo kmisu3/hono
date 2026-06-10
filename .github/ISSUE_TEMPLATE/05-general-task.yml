@@ -20,7 +20,7 @@ body:
     id: objective
     attributes:
       label: 目的
-      description: このタスクで得たい成果と、必要な理由を記載してください。
+      description: このタスクで得たい成果と、必要な理由の記載。
     validations:
       required: true
   - type: textarea
@@ -36,15 +36,15 @@ body:
     id: approach
     attributes:
       label: 進め方の案
-      description: 必要な手順、制約、担当者、判断ポイントなどを記載してください。
+      description: 必要な手順、制約、担当者、判断ポイントなどの記載。
   - type: textarea
     id: dependencies
     attributes:
       label: 依存関係・参考情報
-      description: 関連作業へのリンクや、このタスクを妨げる可能性がある事項を記載してください。
+      description: 関連作業へのリンクや、このタスクを妨げる可能性がある事項の記載。
   - type: input
     id: target_date
     attributes:
       label: 目標日
-      description: 任意です。明確な期限がある場合は YYYY-MM-DD 形式で入力してください。
+      description: 明確な期限がある場合のみ、YYYY-MM-DD形式で任意入力。
       placeholder: YYYY-MM-DD

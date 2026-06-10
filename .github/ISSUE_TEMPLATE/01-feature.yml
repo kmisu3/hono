@@ -6,12 +6,12 @@ body:
   - type: markdown
     attributes:
       value: |
-        解決策を提案する前に、利用者が抱えている課題を説明してください。成果が明確で適切な大きさのIssueは、優先順位付けと実装がしやすくなります。
+        解決策より先に、利用者が抱えている課題を整理。成果が明確で適切な大きさのIssueは、優先順位付けと実装が容易。
   - type: textarea
     id: problem
     attributes:
       label: 解決したい課題・改善機会
-      description: 誰がどのような課題を抱えており、解決することにどのような価値がありますか？
+      description: 誰が抱えている課題か、解決によって得られる価値は何か。
       placeholder: 〇〇として、△△したい。なぜなら□□だから。
     validations:
       required: true
@@ -19,14 +19,14 @@ body:
     id: outcome
     attributes:
       label: 期待する成果
-      description: 実装方法だけでなく、実現後に確認できる成果を記載してください。
+      description: 実装方法ではなく、実現後に確認できる成果の記載。
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
       label: 受け入れ条件
-      description: このIssueを完了と判断できる条件を記載してください。
+      description: このIssueを完了と判断できる条件の記載。
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -36,12 +36,12 @@ body:
     id: approach
     attributes:
       label: 実現方法の案
-      description: 任意で、実装案、API例、検討した代替案を記載してください。
+      description: 実装案、API例、検討した代替案などの任意記載。
   - type: textarea
     id: scope
     attributes:
       label: 対象範囲・対象外
-      description: 対応に含める内容と、意図的に含めない内容を明確にしてください。
+      description: 対応に含める内容と、意図的に含めない内容の明確化。
       placeholder: |
         対象:
         - ...
@@ -52,4 +52,4 @@ body:
     id: dependencies
     attributes:
       label: 依存関係・参考情報
-      description: 関連Issue、設計資料、ドキュメント、外部資料などを記載してください。
+      description: 関連Issue、設計資料、ドキュメント、外部資料などの記載。
