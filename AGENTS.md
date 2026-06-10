@@ -1,34 +1,43 @@
-# Repository Guidelines
+# リポジトリガイドライン
 
-## Project overview
+## プロジェクト概要
 
-- Hono and TypeScript REST API running on Node.js.
-- Local development uses Docker Compose and exposes the API on port `8787`.
-- API routes and application logic live in `src/app.ts`.
-- `src/index.ts` starts the Node.js server.
+- Node.js上で動作するHono・TypeScript製REST API。
+- ローカル開発はDocker Composeを使用し、APIをポート`8787`で公開。
+- APIルートとアプリケーションロジックは`src/app.ts`。
+- Node.jsサーバーの起動処理は`src/index.ts`。
 
-## Development commands
+## 開発コマンド
 
-- Start: `docker compose up --build`
-- Test: `npm test`
-- Build: `npm run build`
-- Full check: `npm run check`
-- Before a manual commit: `npm run commit:check`
+- 起動: `docker compose up --build`
+- テスト: `npm test`
+- ビルド: `npm run build`
+- 一括チェック: `npm run check`
+- 手動コミット前チェック: `npm run commit:check`
 
-## Working conventions
+## 開発ルール
 
-- Keep changes focused on the requested task.
-- Add or update tests when behavior changes.
-- Validate external input with Zod.
-- Keep route handlers and JSON responses simple and consistent.
-- Do not commit secrets, `.env`, generated `dist/`, or `node_modules/`.
-- Do not push or create a pull request unless explicitly requested.
+- 変更は依頼されたタスクの範囲内に限定。
+- 動作を変更する場合はテストを追加・更新。
+- 外部入力はZodで検証。
+- ルートハンドラーとJSONレスポンスは簡潔で一貫した形を維持。
+- 秘密情報、`.env`、生成された`dist/`、`node_modules/`はコミット対象外。
+- 明示的な依頼がない限り、pushとPull Request作成は実行対象外。
 
-## Commit workflow
+## コミット手順
 
-1. Review `git status` and the complete diff.
-2. Run `npm run commit:check`.
-3. Stage only files related to the intended change.
-4. Review the staged diff with `git diff --cached`.
-5. Create one focused commit with a concise imperative message.
-6. Do not push automatically.
+1. `git status`と全差分を確認。
+2. `npm run commit:check`を実行。
+3. 対象タスクに関係するファイルだけをステージ。
+4. `git diff --cached`でステージ済み差分を確認。
+5. 変更内容が分かる簡潔な日本語メッセージでコミット。
+6. 自動pushは禁止。
+
+## Agent Skills
+
+- 共通Skillsの実体: `.agents/skills`
+- Claude Code: `.claude/skills`から共通Skillsを参照
+- Cursor: `.cursor/skills`から共通Skillsを参照
+- Codex: `.codex/skills`から共通Skillsを参照
+- `/check`: 標準チェックの実行
+- `/commit [コミット内容]`: 日本語メッセージでコミット。pushは実行対象外

@@ -93,11 +93,15 @@ git commit -m "変更内容"
 Claude CodeとCursor向けに、共通の開発手順とコマンドを用意しています。
 
 - 共通ルール: `AGENTS.md`
-- Claude Code: `CLAUDE.md`、`/check`、`/commit [メッセージ]`
-- Cursor: `/check`、`/commit [メッセージ]`
+- 共通Agent Skills: `.agents/skills`
+- Claude Code: `CLAUDE.md`、`.claude/skills`
+- Cursor: `.cursor/skills`
+- Codex: `.codex/skills`
+- 共通コマンド: `/check`、`/commit [コミット内容]`
 
-`/commit` は差分確認、検証、ステージング、コミットまでを実行し、pushは行いません。
-Claude CodeとCursorはいずれも、プロジェクト内のAgent Skillsを利用する構成です。
+各ツール固有のSkillsディレクトリは、`.agents/skills`へのシンボリックリンクです。
+`/commit`は差分確認、検証、ステージング、日本語メッセージでのコミットまでを実行し、
+pushは行いません。
 
 ## ファイル構成
 
