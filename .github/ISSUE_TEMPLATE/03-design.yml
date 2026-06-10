@@ -1,0 +1,52 @@
+name: Design or architecture task
+description: Explore and decide an API, architecture, data model, or technical direction.
+title: "[Design]: "
+labels: ["type:design", "status:triage"]
+body:
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Explain the current situation, constraints, and why a decision is needed.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision to make
+      description: State the question this design task must answer.
+    validations:
+      required: true
+  - type: textarea
+    id: requirements
+    attributes:
+      label: Requirements and constraints
+      placeholder: |
+        - Functional:
+        - Non-functional:
+        - Compatibility:
+        - Operational:
+    validations:
+      required: true
+  - type: textarea
+    id: options
+    attributes:
+      label: Options and trade-offs
+      description: Compare viable approaches, including costs, risks, and rejected options.
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Expected deliverables
+      description: Define what completes this task, such as an ADR, prototype, or implementation plan.
+      placeholder: |
+        - [ ] Decision recorded
+        - [ ] Follow-up implementation issues created
+    validations:
+      required: true
+  - type: textarea
+    id: references
+    attributes:
+      label: References
+      description: Link related issues, diagrams, experiments, or external documentation.

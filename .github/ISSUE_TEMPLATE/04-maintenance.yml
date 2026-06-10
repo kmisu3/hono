@@ -1,0 +1,45 @@
+name: Maintenance or refactoring
+description: Improve reliability, maintainability, dependencies, tooling, or developer experience.
+title: "[Maintenance]: "
+labels: ["type:maintenance", "status:triage"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation
+      description: What problem, risk, or recurring cost should this work reduce?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Describe the systems or files affected and the intended changes.
+    validations:
+      required: true
+  - type: textarea
+    id: completion
+    attributes:
+      label: Completion criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: risk
+    attributes:
+      label: Risk and compatibility
+      description: Note behavioral changes, migration needs, rollback concerns, or why there is no user-facing impact.
+    validations:
+      required: true
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification plan
+      description: Explain how the change will be validated.
+  - type: textarea
+    id: references
+    attributes:
+      label: Dependencies and references
+      description: Link related issues, dependency notices, metrics, or documentation.

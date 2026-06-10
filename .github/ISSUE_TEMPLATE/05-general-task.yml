@@ -1,0 +1,50 @@
+name: General or non-code task
+description: Track research, documentation, operations, coordination, or other non-code work.
+title: "[Task]: "
+labels: ["type:task", "status:triage"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Documentation
+        - Research or investigation
+        - Operations
+        - Coordination or planning
+        - Release or communication
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What outcome should this task produce, and why is it needed?
+    validations:
+      required: true
+  - type: textarea
+    id: deliverables
+    attributes:
+      label: Deliverables and completion criteria
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Suggested approach
+      description: Add useful steps, constraints, owners, or decision points.
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and references
+      description: Link related work and note anything that can block this task.
+  - type: input
+    id: target_date
+    attributes:
+      label: Target date
+      description: Optional. Use YYYY-MM-DD when this work has a meaningful deadline.
+      placeholder: YYYY-MM-DD

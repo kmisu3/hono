@@ -1,0 +1,55 @@
+name: Feature request
+description: Propose a new capability or an improvement to existing behavior.
+title: "[Feature]: "
+labels: ["type:feature", "status:triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Describe the user problem before proposing a solution. Small, outcome-focused issues are easier to prioritize and deliver.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: Who has this problem, and why is solving it valuable?
+      placeholder: As a ..., I want ..., so that ...
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Desired outcome
+      description: Describe the observable result, not only the implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: List the conditions that must be true for this issue to be complete.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed approach
+      description: Optional implementation ideas, API examples, or alternatives considered.
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and non-goals
+      description: Clarify what is included and intentionally excluded.
+      placeholder: |
+        In scope:
+        - ...
+
+        Out of scope:
+        - ...
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and references
+      description: Link related issues, designs, documentation, or external references.

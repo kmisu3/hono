@@ -91,3 +91,12 @@ npm test
 2. Zod のスキーマを変更し、入力検証を試す
 3. `src/app.test.ts` にテストケースを追加する
 4. SQLite や PostgreSQL を追加し、Todo を永続化する
+
+## GitHub での開発管理
+
+Issue 作成時は、実装・バグ・設計・保守・非コード作業に対応した Issue Form を
+選択できます。Pull Request には、関連 Issue、検証内容、影響とリスクを確認する
+テンプレートが適用されます。
+
+GitHub Projects の推奨フィールド、ビュー、ワークフロー、トリアージ手順は
+[`.github/PROJECTS.md`](.github/PROJECTS.md) を参照してください。

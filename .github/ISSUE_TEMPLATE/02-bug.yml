@@ -1,0 +1,70 @@
+name: Bug report
+description: Report reproducible incorrect or unexpected behavior.
+title: "[Bug]: "
+labels: ["type:bug", "status:triage"]
+body:
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Pre-submission checks
+      options:
+        - label: I searched existing issues for the same problem.
+          required: true
+        - label: I removed secrets and sensitive data from logs and examples.
+          required: true
+  - type: textarea
+    id: current_behavior
+    attributes:
+      label: Current behavior
+      description: What happened? Include the impact and frequency when known.
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected behavior
+      description: What should happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest reliable set of steps or a minimal reproduction.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include relevant versions and configuration.
+      value: |
+        - OS:
+        - Node.js:
+        - Package manager:
+        - Commit/version:
+      render: markdown
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or additional context
+      description: Paste relevant logs, screenshots, or links. Do not include secrets.
+      render: shell
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Suggested severity
+      description: Maintainers will confirm the final priority during triage.
+      options:
+        - Blocks core usage or causes data/security risk
+        - Major functionality is unavailable
+        - Limited impact or workaround exists
+        - Minor or cosmetic issue
+    validations:
+      required: true
