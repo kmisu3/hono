@@ -1,32 +1,32 @@
-name: Feature request
-description: Propose a new capability or an improvement to existing behavior.
-title: "[Feature]: "
+name: 機能追加・改善
+description: 新しい機能や、既存機能の改善を提案します。
+title: "[機能]: "
 labels: ["type:feature", "status:triage"]
 body:
   - type: markdown
     attributes:
       value: |
-        Describe the user problem before proposing a solution. Small, outcome-focused issues are easier to prioritize and deliver.
+        解決策を提案する前に、利用者が抱えている課題を説明してください。成果が明確で適切な大きさのIssueは、優先順位付けと実装がしやすくなります。
   - type: textarea
     id: problem
     attributes:
-      label: Problem or opportunity
-      description: Who has this problem, and why is solving it valuable?
-      placeholder: As a ..., I want ..., so that ...
+      label: 解決したい課題・改善機会
+      description: 誰がどのような課題を抱えており、解決することにどのような価値がありますか？
+      placeholder: 〇〇として、△△したい。なぜなら□□だから。
     validations:
       required: true
   - type: textarea
     id: outcome
     attributes:
-      label: Desired outcome
-      description: Describe the observable result, not only the implementation.
+      label: 期待する成果
+      description: 実装方法だけでなく、実現後に確認できる成果を記載してください。
     validations:
       required: true
   - type: textarea
     id: acceptance
     attributes:
-      label: Acceptance criteria
-      description: List the conditions that must be true for this issue to be complete.
+      label: 受け入れ条件
+      description: このIssueを完了と判断できる条件を記載してください。
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -35,21 +35,21 @@ body:
   - type: textarea
     id: approach
     attributes:
-      label: Proposed approach
-      description: Optional implementation ideas, API examples, or alternatives considered.
+      label: 実現方法の案
+      description: 任意で、実装案、API例、検討した代替案を記載してください。
   - type: textarea
     id: scope
     attributes:
-      label: Scope and non-goals
-      description: Clarify what is included and intentionally excluded.
+      label: 対象範囲・対象外
+      description: 対応に含める内容と、意図的に含めない内容を明確にしてください。
       placeholder: |
-        In scope:
+        対象:
         - ...
 
-        Out of scope:
+        対象外:
         - ...
   - type: textarea
     id: dependencies
     attributes:
-      label: Dependencies and references
-      description: Link related issues, designs, documentation, or external references.
+      label: 依存関係・参考情報
+      description: 関連Issue、設計資料、ドキュメント、外部資料などを記載してください。

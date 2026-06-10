@@ -1,32 +1,32 @@
-name: General or non-code task
-description: Track research, documentation, operations, coordination, or other non-code work.
-title: "[Task]: "
+name: 一般・非コードタスク
+description: 調査、ドキュメント、運用、調整など、実装以外を含む作業を管理します。
+title: "[タスク]: "
 labels: ["type:task", "status:triage"]
 body:
   - type: dropdown
     id: category
     attributes:
-      label: Category
+      label: カテゴリ
       options:
-        - Documentation
-        - Research or investigation
-        - Operations
-        - Coordination or planning
-        - Release or communication
-        - Other
+        - ドキュメント
+        - 調査・検証
+        - 運用
+        - 調整・計画
+        - リリース・周知
+        - その他
     validations:
       required: true
   - type: textarea
     id: objective
     attributes:
-      label: Objective
-      description: What outcome should this task produce, and why is it needed?
+      label: 目的
+      description: このタスクで得たい成果と、必要な理由を記載してください。
     validations:
       required: true
   - type: textarea
     id: deliverables
     attributes:
-      label: Deliverables and completion criteria
+      label: 成果物・完了条件
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -35,16 +35,16 @@ body:
   - type: textarea
     id: approach
     attributes:
-      label: Suggested approach
-      description: Add useful steps, constraints, owners, or decision points.
+      label: 進め方の案
+      description: 必要な手順、制約、担当者、判断ポイントなどを記載してください。
   - type: textarea
     id: dependencies
     attributes:
-      label: Dependencies and references
-      description: Link related work and note anything that can block this task.
+      label: 依存関係・参考情報
+      description: 関連作業へのリンクや、このタスクを妨げる可能性がある事項を記載してください。
   - type: input
     id: target_date
     attributes:
-      label: Target date
-      description: Optional. Use YYYY-MM-DD when this work has a meaningful deadline.
+      label: 目標日
+      description: 任意です。明確な期限がある場合は YYYY-MM-DD 形式で入力してください。
       placeholder: YYYY-MM-DD

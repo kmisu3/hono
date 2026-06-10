@@ -1,36 +1,36 @@
-name: Bug report
-description: Report reproducible incorrect or unexpected behavior.
-title: "[Bug]: "
+name: 不具合報告
+description: 再現可能な不具合や想定外の動作を報告します。
+title: "[不具合]: "
 labels: ["type:bug", "status:triage"]
 body:
   - type: checkboxes
     id: checks
     attributes:
-      label: Pre-submission checks
+      label: 報告前の確認
       options:
-        - label: I searched existing issues for the same problem.
+        - label: 同じ問題が既存Issueにないことを確認しました。
           required: true
-        - label: I removed secrets and sensitive data from logs and examples.
+        - label: ログや例から秘密情報・機密情報を削除しました。
           required: true
   - type: textarea
     id: current_behavior
     attributes:
-      label: Current behavior
-      description: What happened? Include the impact and frequency when known.
+      label: 現在の動作
+      description: 何が起きましたか？分かる範囲で影響範囲や発生頻度も記載してください。
     validations:
       required: true
   - type: textarea
     id: expected_behavior
     attributes:
-      label: Expected behavior
-      description: What should happen instead?
+      label: 期待する動作
+      description: 本来はどのように動作するべきですか？
     validations:
       required: true
   - type: textarea
     id: reproduction
     attributes:
-      label: Reproduction steps
-      description: Provide the smallest reliable set of steps or a minimal reproduction.
+      label: 再現手順
+      description: 問題を確実に再現できる最小限の手順、または再現用コードを記載してください。
       placeholder: |
         1. ...
         2. ...
@@ -40,31 +40,31 @@ body:
   - type: textarea
     id: environment
     attributes:
-      label: Environment
-      description: Include relevant versions and configuration.
+      label: 実行環境
+      description: 関係するバージョンや設定を記載してください。
       value: |
         - OS:
         - Node.js:
-        - Package manager:
-        - Commit/version:
+        - パッケージマネージャー:
+        - コミット/バージョン:
       render: markdown
     validations:
       required: true
   - type: textarea
     id: logs
     attributes:
-      label: Logs or additional context
-      description: Paste relevant logs, screenshots, or links. Do not include secrets.
+      label: ログ・補足情報
+      description: 関連するログ、スクリーンショット、リンクを記載してください。秘密情報は含めないでください。
       render: shell
   - type: dropdown
     id: severity
     attributes:
-      label: Suggested severity
-      description: Maintainers will confirm the final priority during triage.
+      label: 想定する深刻度
+      description: 最終的な優先度はトリアージ時に確認します。
       options:
-        - Blocks core usage or causes data/security risk
-        - Major functionality is unavailable
-        - Limited impact or workaround exists
-        - Minor or cosmetic issue
+        - 主要機能が利用不能、またはデータ・セキュリティ上のリスクがある
+        - 重要な機能が利用できない
+        - 影響が限定的、または回避策がある
+        - 軽微、または見た目のみの問題
     validations:
       required: true

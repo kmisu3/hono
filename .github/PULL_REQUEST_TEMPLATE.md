@@ -1,41 +1,41 @@
-## Summary
+## 概要
 
-<!-- Explain what changed and why. Focus on the outcome for users or developers. -->
+<!-- 何を、なぜ変更したかを説明してください。利用者や開発者が得る成果を中心に記載します。 -->
 
-## Related issue
+## 関連Issue
 
-<!-- Use "Closes #123" when merging this PR should close an issue. -->
+<!-- このPRのマージ時にIssueを閉じる場合は "Closes #123" を使用してください。 -->
 
 Closes #
 
-## Change type
+## 変更種別
 
-- [ ] Feature
-- [ ] Bug fix
-- [ ] Design or architecture
-- [ ] Maintenance or refactoring
-- [ ] Documentation or other non-code change
+- [ ] 機能追加・改善
+- [ ] 不具合修正
+- [ ] 設計・アーキテクチャ
+- [ ] 保守・リファクタリング
+- [ ] ドキュメント・その他の非コード変更
 
-## Changes
+## 変更内容
 
-<!-- List the important changes and any deliberate non-goals. -->
+<!-- 重要な変更点と、意図的に対応対象外とした内容を記載してください。 -->
 
-## Verification
+## 検証内容
 
-<!-- Include commands run, manual checks, screenshots, or explain why testing is not applicable. -->
+<!-- 実行したコマンド、手動確認、スクリーンショットを記載してください。検証不要の場合は理由を説明します。 -->
 
-## Impact and risk
+## 影響・リスク
 
-<!-- Describe compatibility, security, performance, operational, migration, and rollback considerations. Write "None" where appropriate. -->
+<!-- 互換性、セキュリティ、性能、運用、移行、ロールバックへの影響を記載してください。該当しない場合は「なし」と記載します。 -->
 
-## Review focus
+## レビューしてほしい点
 
-<!-- Point reviewers to decisions, trade-offs, or areas that need extra attention. -->
+<!-- 判断事項、トレードオフ、特に注意して確認してほしい箇所を記載してください。 -->
 
-## Checklist
+## チェックリスト
 
-- [ ] The scope is focused and the related issue or rationale is clear.
-- [ ] Tests or verification cover the changed behavior.
-- [ ] Documentation and examples are updated where needed.
-- [ ] No secrets, personal data, or unrelated changes are included.
-- [ ] Breaking changes, migrations, and rollout steps are documented where needed.
+- [ ] 対応範囲が適切で、関連Issueまたは変更理由が明確です。
+- [ ] 変更した動作をテストまたは検証で確認しています。
+- [ ] 必要なドキュメントや例を更新しています。
+- [ ] 秘密情報、個人情報、無関係な変更を含んでいません。
+- [ ] 破壊的変更、移行、リリース手順を必要に応じて記載しています。

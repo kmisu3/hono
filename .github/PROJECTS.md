@@ -1,56 +1,55 @@
-# GitHub Projects Operating Guide
+# GitHub Projects 運用ガイド
 
-This repository uses issues as the source of truth for planned work and pull
-requests as the record of delivered changes. Keep Project fields useful for
-planning and labels useful for repository-wide classification and automation.
+このリポジトリでは、予定している作業の情報源としてIssueを使用し、完了した変更の
+記録としてPull Requestを使用します。Projectのフィールドは計画と進捗管理に、
+ラベルはリポジトリ全体の分類と自動化に使用します。
 
-## Recommended fields
+## 推奨フィールド
 
-| Field | Type | Suggested values |
+| フィールド | 種類 | 推奨値 |
 | --- | --- | --- |
-| Status | Single select | Triage, Ready, In progress, In review, Blocked, Done |
-| Priority | Single select | P0 Critical, P1 High, P2 Medium, P3 Low |
-| Size | Single select | XS, S, M, L, XL |
-| Iteration | Iteration | Use when planning in fixed cycles |
-| Target date | Date | Use only when a real deadline exists |
+| Status | 単一選択 | トリアージ、着手可能、進行中、レビュー中、ブロック中、完了 |
+| Priority | 単一選択 | P0 緊急、P1 高、P2 中、P3 低 |
+| Size | 単一選択 | XS、S、M、L、XL |
+| Iteration | イテレーション | 一定期間ごとに計画する場合に使用 |
+| Target date | 日付 | 明確な期限がある場合のみ使用 |
 
-Use the built-in assignee, milestone, repository, and linked pull request fields
-instead of duplicating them as custom fields.
+担当者、マイルストーン、リポジトリ、リンクされたPull Requestは、重複するカスタム
+フィールドを作らず、GitHub Projectsの組み込みフィールドを使用します。
 
-## Recommended views
+## 推奨ビュー
 
-| View | Layout and filter | Purpose |
+| ビュー | レイアウト・フィルター | 用途 |
 | --- | --- | --- |
-| Triage | Table, `status:Triage` | Clarify, prioritize, assign, or close new work |
-| Delivery board | Board grouped by Status | Track active delivery |
-| Roadmap | Roadmap grouped by milestone or iteration | Communicate planned outcomes |
-| Bugs and risks | Table, `label:"type:bug"` | Focus on defects and operational risk |
-| Recently done | Table, `status:Done` sorted by updated date | Review delivered work |
+| トリアージ | テーブル、`status:トリアージ` | 新規作業の明確化、優先順位付け、担当割り当て、クローズ |
+| 開発ボード | Statusでグループ化したボード | 進行中の作業を追跡 |
+| ロードマップ | マイルストーンまたはIterationでグループ化 | 予定している成果を共有 |
+| 不具合・リスク | テーブル、`label:"type:bug"` | 不具合と運用リスクに集中 |
+| 最近の完了 | テーブル、`status:完了`、更新日時順 | 完了した作業を確認 |
 
-## Recommended workflows
+## 推奨ワークフロー
 
-1. Enable Auto-add for this repository with `is:issue`.
-2. Set newly added items to `Triage`.
-3. Set items to `Done` when their issue is closed or pull request is merged.
-4. Automatically archive old `Done` items after an agreed retention period.
+1. このリポジトリを対象に、フィルターを `is:issue` としてAuto-addを有効にします。
+2. 新しく追加された項目のStatusを「トリアージ」に設定します。
+3. Issueがクローズ、またはPull RequestがマージされたらStatusを「完了」にします。
+4. 合意した保管期間を過ぎた「完了」項目を自動アーカイブします。
 
-Auto-add is preferred over the `projects` key in issue forms because people
-opening an issue need write access to a project for direct form-based addition
-to succeed.
+Issue Formの `projects` キーで直接追加するには、Issue作成者がProjectへの書き込み権限を
+持っている必要があります。外部からのIssueも確実に追加できるよう、Auto-addを推奨します。
 
-## Triage rules
+## トリアージ手順
 
-1. Confirm the issue has a clear outcome and completion criteria.
-2. Confirm or replace its `type:*` label.
-3. Set Priority and Size in the Project.
-4. Link dependencies and split work that is too large.
-5. Move actionable work to `Ready`; close duplicate, invalid, or obsolete work.
+1. Issueの成果と完了条件が明確か確認します。
+2. `type:*` ラベルが適切か確認し、必要に応じて変更します。
+3. Project上でPriorityとSizeを設定します。
+4. 依存関係をリンクし、大きすぎる作業は分割します。
+5. 着手可能な作業を「着手可能」に移動し、重複・無効・不要な作業はクローズします。
 
-## Label model
+## ラベルの役割
 
-- `type:*` describes what kind of work the issue represents.
-- `status:triage` marks new work that has not been fully reviewed.
-- Project Status describes the delivery stage after the item enters the Project.
+- `type:*` は作業の種類を表します。
+- `status:triage` は、まだ十分に確認されていない新規作業を表します。
+- ProjectのStatusは、Project追加後の進捗段階を表します。
 
-Avoid encoding Priority and delivery Status in both labels and Project fields.
-Keeping one source of truth prevents conflicting values.
+Priorityや進捗StatusをラベルとProjectフィールドの両方で管理すると、値が矛盾しやすく
+なります。情報源を一つに保つため、Projectフィールドのみで管理します。

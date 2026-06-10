@@ -1,26 +1,26 @@
-name: Maintenance or refactoring
-description: Improve reliability, maintainability, dependencies, tooling, or developer experience.
-title: "[Maintenance]: "
+name: 保守・リファクタリング
+description: 信頼性、保守性、依存関係、ツール、開発者体験などを改善します。
+title: "[保守]: "
 labels: ["type:maintenance", "status:triage"]
 body:
   - type: textarea
     id: motivation
     attributes:
-      label: Motivation
-      description: What problem, risk, or recurring cost should this work reduce?
+      label: 対応理由
+      description: この作業によって、どのような問題、リスク、継続的コストを減らしますか？
     validations:
       required: true
   - type: textarea
     id: scope
     attributes:
-      label: Scope
-      description: Describe the systems or files affected and the intended changes.
+      label: 対象範囲
+      description: 影響するシステムやファイル、予定している変更を記載してください。
     validations:
       required: true
   - type: textarea
     id: completion
     attributes:
-      label: Completion criteria
+      label: 完了条件
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -29,17 +29,17 @@ body:
   - type: textarea
     id: risk
     attributes:
-      label: Risk and compatibility
-      description: Note behavioral changes, migration needs, rollback concerns, or why there is no user-facing impact.
+      label: リスク・互換性
+      description: 動作変更、移行作業、ロールバック上の懸念、または利用者への影響がない理由を記載してください。
     validations:
       required: true
   - type: textarea
     id: verification
     attributes:
-      label: Verification plan
-      description: Explain how the change will be validated.
+      label: 検証方法
+      description: 変更内容をどのように検証するか記載してください。
   - type: textarea
     id: references
     attributes:
-      label: Dependencies and references
-      description: Link related issues, dependency notices, metrics, or documentation.
+      label: 依存関係・参考情報
+      description: 関連Issue、依存関係の通知、指標、ドキュメントなどを記載してください。
