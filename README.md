@@ -73,6 +73,32 @@ npm run dev
 npm test
 ```
 
+テスト、TypeScriptビルド、差分チェックをまとめて実行:
+
+```sh
+npm run check
+```
+
+手動コミット前の確認:
+
+```sh
+npm run commit:check
+git add <対象ファイル>
+git diff --cached
+git commit -m "変更内容"
+```
+
+## AI開発ツール
+
+Claude CodeとCursor向けに、共通の開発手順とコマンドを用意しています。
+
+- 共通ルール: `AGENTS.md`
+- Claude Code: `CLAUDE.md`、`/check`、`/commit [メッセージ]`
+- Cursor: `/check`、`/commit [メッセージ]`
+
+`/commit` は差分確認、検証、ステージング、コミットまでを実行し、pushは行いません。
+Claude CodeとCursorはいずれも、プロジェクト内のAgent Skillsを利用する構成です。
+
 ## ファイル構成
 
 ```text
