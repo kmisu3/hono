@@ -1,8 +1,10 @@
-# Hono Local Learning API
+# Hono API
 
-Hono と TypeScript で REST API を学ぶための、Docker 対応ローカル環境です。
-データベースはまだ使わず、Todo をメモリ上に保存します。コンテナを再起動すると
-データは初期状態に戻ります。
+Hono と TypeScript を使用したREST API開発用リポジトリです。
+Dockerを利用して、ローカル環境ですぐに開発を始められます。
+
+現在はTodo APIを提供しており、データはメモリ上に保存します。コンテナを再起動すると
+データは初期状態に戻るため、永続化が必要な場合はデータベースを追加してください。
 
 ## 必要なもの
 
@@ -28,14 +30,14 @@ curl http://localhost:8787/api/todos
 docker compose down
 ```
 
-## API を試す
+## API の動作確認
 
 Todo を作成:
 
 ```sh
 curl -i -X POST http://localhost:8787/api/todos \
   -H 'Content-Type: application/json' \
-  -d '{"title":"DockerでHonoを学ぶ"}'
+  -d '{"title":"Hono APIを開発する"}'
 ```
 
 Todo を更新:
@@ -85,10 +87,10 @@ npm test
 └── tsconfig.json
 ```
 
-## 学習の進め方
+## 今後の開発候補
 
 1. `src/app.ts` に新しいルートを追加する
-2. Zod のスキーマを変更し、入力検証を試す
+2. Zod のスキーマを変更し、入力検証を追加する
 3. `src/app.test.ts` にテストケースを追加する
 4. SQLite や PostgreSQL を追加し、Todo を永続化する
 

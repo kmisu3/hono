@@ -14,7 +14,7 @@ describe('Todo API', () => {
     const createResponse = await app.request('/api/todos', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ title: 'APIを学ぶ' }),
+      body: JSON.stringify({ title: 'APIを開発する' }),
     })
 
     expect(createResponse.status).toBe(201)
@@ -23,7 +23,7 @@ describe('Todo API', () => {
     const body = await listResponse.json()
 
     expect(body.data).toHaveLength(2)
-    expect(body.data[1].title).toBe('APIを学ぶ')
+    expect(body.data[1].title).toBe('APIを開発する')
   })
 
   it('rejects an empty title', async () => {

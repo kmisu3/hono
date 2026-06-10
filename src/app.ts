@@ -25,7 +25,7 @@ const updateTodoSchema = z
 export const createApp = () => {
   const app = new Hono()
   const todos: Todo[] = [
-    { id: 1, title: 'Honoを試す', completed: false },
+    { id: 1, title: 'Hono APIを開発する', completed: false },
   ]
   let nextId = 2
 
@@ -33,7 +33,7 @@ export const createApp = () => {
 
   app.get('/', (c) =>
     c.json({
-      message: 'Hono local learning API',
+      message: 'Hono API',
       endpoints: '/health, /api/todos',
     }),
   )
