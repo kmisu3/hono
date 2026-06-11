@@ -1,8 +1,19 @@
 name: 不具合対応
 description: 不具合や想定外の動作への対応。
 title: "[不具合]: "
-labels: ["type:bug", "status:triage"]
+labels: ["type:bug"]
 body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: 対象領域
+      description: 主な対象領域。作成後に対応するareaラベルを付与。
+      options:
+        - フロントエンド（area:frontend）
+        - バックエンド（area:backend）
+        - 共通（area:common）
+    validations:
+      required: true
   - type: textarea
     id: summary
     attributes:
@@ -28,7 +39,7 @@ body:
     id: environment
     attributes:
       label: 環境・ログ
-      description: 実行環境、バージョン、ログ、スクリーンショットなど。
+      description: OS、ブラウザ、端末、実行環境、バージョン、ログ、スクリーンショットなど。
   - type: textarea
     id: notes
     attributes:

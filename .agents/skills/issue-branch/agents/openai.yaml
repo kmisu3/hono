@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issueブランチ作成"
+  short_description: "Issue番号を含む英語名の作業ブランチを作成"
+  default_prompt: "Issue番号を元に作業ブランチを作成してください。"
