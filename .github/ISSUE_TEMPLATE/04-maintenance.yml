@@ -1,17 +1,17 @@
 name: 保守・リファクタリング
 description: コード、依存関係、ツール、開発環境などの保守・改善。
 title: "[保守]: "
-labels: ["種類:保守"]
+labels: ["作業:保守"]
 body:
   - type: dropdown
     id: area
     attributes:
-      label: 対象領域
-      description: 主な対象領域。作成後に対応する領域ラベルを付与。
+      label: 変更対象
+      description: 主な変更対象。作成後に対応する対象ラベルを付与。
       options:
-        - フロントエンド（領域:フロントエンド）
-        - バックエンド（領域:バックエンド）
-        - 共通（領域:共通）
+        - フロントエンド（対象:フロントエンド）
+        - バックエンド（対象:バックエンド）
+        - 共通（対象:共通）
     validations:
       required: true
   - type: textarea
