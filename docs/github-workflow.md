@@ -27,14 +27,14 @@ Issue作成後に選択した`area:*`ラベルを付与する。`issue` Skillで
 Issueへ着手するときは、`issue-branch` Skillで作業ブランチを作成する。
 
 ```text
-issue/<Issue番号>-<英語の短い名前>
+<Issue番号>-<英語の短い名前>
 ```
 
 例:
 
 ```text
-issue/123-add-login-page
-issue/124-fix-todo-validation
+123-add-login-page
+124-fix-todo-validation
 ```
 
 - Issue番号と英語slugを必ず含める

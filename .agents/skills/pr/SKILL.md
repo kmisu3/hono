@@ -7,7 +7,7 @@ Issueへ紐付くPull Requestを準備する。
 
 1. `AGENTS.md`、`docs/github-workflow.md`、`.github/PULL_REQUEST_TEMPLATE.md`を確認する。
 2. `git status`、現在ブランチ、コミット履歴、対象ブランチとの差分を確認する。
-3. `issue/<番号>-<slug>`形式のブランチ名またはユーザー指定からIssue番号を特定する。
+3. `<番号>-<slug>`形式のブランチ名またはユーザー指定からIssue番号を特定する。
 4. Issue番号を特定できない場合は確認し、捏造しない。
 5. PR本文はIssueとの関係だけを記載する。
    - マージ時に閉じる: `Closes #<番号>`
