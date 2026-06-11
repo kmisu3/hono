@@ -59,6 +59,20 @@ $security-review 現在のAPI変更をレビュー
 - Skill追加後はAgent Skillsのバリデーターで確認する
 - GitHub作成、コミット、pushなどの副作用は明示的な依頼を必要とする
 
+## スモークテスト
+
+Skillの追加・変更時は、構文検証だけでなく主要な利用経路も確認する。
+
+1. 全SkillをAgent Skillsバリデーターで確認
+2. Claude Code、Cursor、Codexから共通Skillを参照できることを確認
+3. `issue`でフロントエンド・バックエンドのIssue下書きを確認
+4. `pr`でブランチ名からIssue番号を特定し、テンプレートどおりの本文を確認
+5. `openapi`でSwagger UIの仕様書配信とPrismの正常系・異常系を確認
+6. `check`でリポジトリ標準チェックを実行
+
+`issue-branch`や`commit`など副作用を伴うSkillは、一時クローンまたは作業用ブランチで
+実際に操作し、対象外の変更、push、Issue更新が発生しないことを確認する。
+
 ## 参考資料
 
 - [Agent Skills](https://agentskills.io/)
