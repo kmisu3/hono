@@ -95,15 +95,20 @@ DBモデルの型をそのまま入力型として使わない。
 
 ## 依存関係の向き
 
-```text
-app
-  ↓
-routes
-  ↓
-service（必要な場合）
-  ↓
-repository / external API
+```mermaid
+flowchart TD
+    app["app<br/>組み立て・Middleware"]
+    routes["routes<br/>HTTP・検証・レスポンス"]
+    service["service<br/>業務ルール（必要な場合）"]
+    repo["repository / external API<br/>永続化・外部通信"]
+
+    app --> routes
+    routes --> service
+    service --> repo
+    routes -. 単純なCRUDはserviceを挟まない .-> repo
 ```
+
+依存は上から下への一方向。下位層は上位層を知らない。
 
 - RepositoryからHonoの`Context`を参照しない
 - ServiceからHTTPステータスや`c.json()`を参照しない
@@ -111,6 +116,35 @@ repository / external API
 - 下位層から上位層をimportしない
 
 これにより、HTTP仕様・業務処理・保存方式を個別に変更しやすくする。
+
+## リクエスト処理の流れ
+
+`POST /api/todos`を例にした、ミドルウェアから永続化までの流れ。
+
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant M as Middleware<br/>logger・secureHeaders・cors
+    participant V as zValidator
+    participant H as ルートハンドラー
+    participant R as TodoRepository
+    participant DB as DB
+
+    C->>M: POST /api/todos
+    M->>V: 共通処理を通過
+    alt 入力不正
+        V-->>C: 400 { error }
+    else 検証OK
+        V->>H: 検証済みデータ
+        H->>R: create(title)
+        R->>DB: INSERT
+        DB-->>R: row
+        R-->>H: Todo
+        H-->>C: 201 { data }
+    end
+```
+
+検証はルート境界（`zValidator`）で完結し、ハンドラーには検証済みデータだけが渡る。
 
 ## 分割するタイミング
 

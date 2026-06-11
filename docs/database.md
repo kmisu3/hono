@@ -28,6 +28,25 @@ src/db/
 MySQLとSQLiteではDrizzleのスキーマ定義が異なるため、DBごとにスキーマを持つ。
 APIは`TodoRepository`だけに依存し、DB固有の実装へ直接依存しない。
 
+```mermaid
+flowchart LR
+    app["createApp()<br/>ルートハンドラー"]
+    repo{{"TodoRepository<br/>インターフェース"}}
+    mysql["createMySqlTodoRepository<br/>(Drizzle / mysql2)"]
+    sqlite["createSqliteTodoRepository<br/>(Drizzle / libSQL)"]
+    mysqldb[("MySQL 8.4<br/>本番・開発")]
+    sqlitedb[("インメモリSQLite<br/>テスト")]
+
+    app --> repo
+    repo -.実装.-> mysql
+    repo -.実装.-> sqlite
+    mysql --> mysqldb
+    sqlite --> sqlitedb
+```
+
+`createApp()`へ実行時にどちらの実装を注入するかだけが変わり、ルート側のコードは
+変わらない。
+
 ## ローカル開発
 
 APIとMySQLを起動:
@@ -47,6 +66,14 @@ docker compose up --build
 ```
 
 ## スキーマ変更
+
+```mermaid
+flowchart LR
+    edit["schema.ts<br/>編集"] --> gen["db:generate<br/>マイグレーション生成"]
+    gen --> review["生成SQLを確認"]
+    review --> check["commit:check<br/>test + build"]
+    check --> migrate["db:migrate<br/>適用"]
+```
 
 1. `src/db/mysql/schema.ts`を変更
 2. 必要に応じて`src/db/sqlite/schema.ts`とテスト用テーブル定義を変更
