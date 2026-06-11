@@ -1,17 +1,17 @@
 name: 新規実装・機能改善
 description: 新規機能の実装、既存機能の変更・改善。
 title: "[機能]: "
-labels: ["type:feature"]
+labels: ["種類:機能"]
 body:
   - type: dropdown
     id: area
     attributes:
       label: 対象領域
-      description: 主な対象領域。作成後に対応するareaラベルを付与。
+      description: 主な対象領域。作成後に対応する領域ラベルを付与。
       options:
-        - フロントエンド（area:frontend）
-        - バックエンド（area:backend）
-        - 共通（area:common）
+        - フロントエンド（領域:フロントエンド）
+        - バックエンド（領域:バックエンド）
+        - 共通（領域:共通）
     validations:
       required: true
   - type: textarea
