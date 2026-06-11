@@ -22,6 +22,16 @@ Issue作成後に変更内容に合う`対象:*`ラベルを付与する。`issu
 
 `作業:*`ラベルは選択したIssue Formから自動付与する。
 
+ラベルの名前、色、説明は`.github/labels.json`で管理する。新規リポジトリへ導入する場合や
+定義を変更した場合は、`labels` Skillまたは次のコマンドで作成・更新する。
+
+```text
+npm run labels:sync -- --repo <owner/repo> --dry-run
+npm run labels:sync -- --repo <owner/repo>
+```
+
+同期処理は定義済みラベルを作成・更新し、定義にない既存ラベルは削除しない。
+
 ## ブランチ
 
 Issueへ着手するときは、`issue-branch` Skillで作業ブランチを作成する。

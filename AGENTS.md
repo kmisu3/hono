@@ -77,6 +77,7 @@
 - Codex: `.codex/skills`から共通Skillsを参照
 - `/check`: 標準チェックの実行
 - `/commit [コミット内容]`: Conventional Commits形式の日本語メッセージでコミット。pushは実行対象外
+- `/labels`: `.github/labels.json`に基づくGitHubラベルの作成・更新
 - `openapi`: API実装とOpenAPI仕様書の同期・検証
 - `issue`: Issue Formに沿ったIssueの下書き・作成
 - `issue-branch`: Issue番号を含む英語名の作業ブランチ作成

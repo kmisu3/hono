@@ -1,0 +1,42 @@
+[
+  {
+    "name": "作業:機能追加",
+    "color": "1D76DB",
+    "description": "新規機能の実装・既存機能の改善"
+  },
+  {
+    "name": "作業:不具合対応",
+    "color": "D73A4A",
+    "description": "不具合や想定外動作への対応"
+  },
+  {
+    "name": "作業:設計",
+    "color": "5319E7",
+    "description": "設計・アーキテクチャの検討"
+  },
+  {
+    "name": "作業:保守",
+    "color": "FBCA04",
+    "description": "リファクタリング・依存関係・開発環境の保守"
+  },
+  {
+    "name": "作業:その他",
+    "color": "0E8A16",
+    "description": "分類に当てはまらない作業"
+  },
+  {
+    "name": "対象:フロントエンド",
+    "color": "54AEFF",
+    "description": "画面・UI・ブラウザ上の処理"
+  },
+  {
+    "name": "対象:バックエンド",
+    "color": "8250DF",
+    "description": "API・DB・サーバー上の処理"
+  },
+  {
+    "name": "対象:共通",
+    "color": "BFD4F2",
+    "description": "開発環境・CI・ドキュメント・複数対象にまたがる変更"
+  }
+]
