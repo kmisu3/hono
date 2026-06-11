@@ -4,7 +4,7 @@ services:
       context: .
       target: development
     ports:
-      - "${API_PORT:-8787}:3000"
+      - "127.0.0.1:${API_PORT:-8787}:3000"
     environment:
       PORT: "3000"
       DATABASE_URL: "mysql://hono:hono@db:3306/hono"
@@ -19,7 +19,7 @@ services:
   db:
     image: mysql:8.4
     ports:
-      - "${MYSQL_PORT:-3306}:3306"
+      - "127.0.0.1:${MYSQL_PORT:-3306}:3306"
     environment:
       MYSQL_DATABASE: hono
       MYSQL_USER: hono
@@ -32,6 +32,24 @@ services:
       retries: 20
     volumes:
       - mysql_data:/var/lib/mysql
+
+  openapi:
+    image: swaggerapi/swagger-ui@sha256:135a9ced4005a947bbb1757bc509309d88519d985aa0f5616f4fdfab1eba6ff6
+    ports:
+      - "127.0.0.1:${OPENAPI_PORT:-8080}:8080"
+    environment:
+      SWAGGER_JSON: /openapi/openapi.yaml
+    volumes:
+      - ./openapi/openapi.yaml:/openapi/openapi.yaml:ro
+
+  mock:
+    image: stoplight/prism:4
+    platform: linux/amd64
+    ports:
+      - "127.0.0.1:${MOCK_PORT:-4010}:4010"
+    command: mock -h 0.0.0.0 /openapi/openapi.yaml
+    volumes:
+      - ./openapi/openapi.yaml:/openapi/openapi.yaml:ro
 
 volumes:
   node_modules:

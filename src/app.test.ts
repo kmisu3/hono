@@ -65,12 +65,28 @@ describe('Todo API', () => {
       })
 
       expect(response.status).toBe(400)
+      expect(await response.json()).toEqual({ error: 'Invalid request' })
     })
 
     it('数値でないIDが拒否されること', async () => {
       const response = await createApp(repository).request('/api/todos/abc')
 
       expect(response.status).toBe(400)
+      expect(await response.json()).toEqual({ error: 'Invalid request' })
+    })
+
+    it('未定義のプロパティが拒否されること', async () => {
+      const response = await createApp(repository).request('/api/todos', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          title: 'APIを開発する',
+          admin: true,
+        }),
+      })
+
+      expect(response.status).toBe(400)
+      expect(await response.json()).toEqual({ error: 'Invalid request' })
     })
   })
 })

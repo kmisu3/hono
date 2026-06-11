@@ -1,0 +1,4 @@
+interface:
+  display_name: "セキュリティレビュー"
+  short_description: "OWASP API Top 10・ASVS観点でAPIを確認"
+  default_prompt: "現在の変更をOWASPの観点でセキュリティレビューしてください。"

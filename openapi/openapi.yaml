@@ -1,0 +1,289 @@
+openapi: 3.1.0
+info:
+  title: Hono Todo API
+  version: 1.0.0
+  description: Honoで実装するTodo APIの仕様書。
+servers:
+  - url: http://localhost:8787
+    description: ローカルAPI
+  - url: http://localhost:4010
+    description: Prismモックサーバー
+tags:
+  - name: System
+    description: APIの稼働確認
+  - name: Todos
+    description: Todoの管理
+paths:
+  /:
+    get:
+      tags:
+        - System
+      summary: API情報の取得
+      operationId: getApiInfo
+      responses:
+        "200":
+          description: API情報
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - message
+                  - endpoints
+                properties:
+                  message:
+                    type: string
+                  endpoints:
+                    type: string
+              examples:
+                default:
+                  value:
+                    message: Hono API
+                    endpoints: /health, /api/todos
+  /health:
+    get:
+      tags:
+        - System
+      summary: 稼働状態の取得
+      operationId: getHealth
+      responses:
+        "200":
+          description: APIは正常稼働中
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+              examples:
+                default:
+                  value:
+                    status: ok
+  /api/todos:
+    get:
+      tags:
+        - Todos
+      summary: Todo一覧の取得
+      operationId: listTodos
+      responses:
+        "200":
+          description: Todo一覧
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Todo"
+              examples:
+                default:
+                  value:
+                    data:
+                      - id: 1
+                        title: Hono APIを開発する
+                        completed: false
+    post:
+      tags:
+        - Todos
+      summary: Todoの作成
+      operationId: createTodo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateTodo"
+            examples:
+              default:
+                value:
+                  title: Hono APIを開発する
+      responses:
+        "201":
+          description: 作成したTodo
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TodoResponse"
+              examples:
+                default:
+                  value:
+                    data:
+                      id: 1
+                      title: Hono APIを開発する
+                      completed: false
+        "400":
+          $ref: "#/components/responses/BadRequest"
+  /api/todos/{id}:
+    parameters:
+      - $ref: "#/components/parameters/TodoId"
+    get:
+      tags:
+        - Todos
+      summary: Todoの取得
+      operationId: getTodo
+      responses:
+        "200":
+          description: Todo
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TodoResponse"
+              examples:
+                default:
+                  value:
+                    data:
+                      id: 1
+                      title: Hono APIを開発する
+                      completed: false
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    patch:
+      tags:
+        - Todos
+      summary: Todoの更新
+      operationId: updateTodo
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UpdateTodo"
+            examples:
+              complete:
+                value:
+                  completed: true
+      responses:
+        "200":
+          description: 更新したTodo
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TodoResponse"
+              examples:
+                default:
+                  value:
+                    data:
+                      id: 1
+                      title: Hono APIを開発する
+                      completed: true
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+    delete:
+      tags:
+        - Todos
+      summary: Todoの削除
+      operationId: deleteTodo
+      responses:
+        "204":
+          description: 削除完了
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "404":
+          $ref: "#/components/responses/NotFound"
+components:
+  parameters:
+    TodoId:
+      name: id
+      in: path
+      required: true
+      description: Todo ID
+      schema:
+        type: integer
+        minimum: 1
+      example: 1
+  schemas:
+    Health:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - ok
+    Todo:
+      type: object
+      required:
+        - id
+        - title
+        - completed
+      properties:
+        id:
+          type: integer
+          minimum: 1
+          examples:
+            - 1
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+          examples:
+            - Hono APIを開発する
+        completed:
+          type: boolean
+          examples:
+            - false
+    CreateTodo:
+      type: object
+      additionalProperties: false
+      required:
+        - title
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+          examples:
+            - Hono APIを開発する
+    UpdateTodo:
+      type: object
+      additionalProperties: false
+      minProperties: 1
+      properties:
+        title:
+          type: string
+          minLength: 1
+          maxLength: 100
+        completed:
+          type: boolean
+    TodoResponse:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: "#/components/schemas/Todo"
+    Error:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+  responses:
+    BadRequest:
+      description: 入力不正
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            default:
+              value:
+                error: Invalid request
+    NotFound:
+      description: Todoが存在しない
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+          examples:
+            default:
+              value:
+                error: Todo not found

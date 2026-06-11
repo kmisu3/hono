@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pull Request作成"
+  short_description: "PRテンプレートに沿ったPull Requestを準備・作成"
+  default_prompt: "差分を確認し、テンプレートに沿ったPull Requestを準備してください。"

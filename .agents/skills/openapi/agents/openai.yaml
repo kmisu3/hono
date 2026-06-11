@@ -1,0 +1,4 @@
+interface:
+  display_name: "OpenAPI仕様書"
+  short_description: "API実装とOpenAPI仕様書を同期して検証"
+  default_prompt: "API変更に合わせてOpenAPI仕様書を更新し、表示とモックを検証してください。"

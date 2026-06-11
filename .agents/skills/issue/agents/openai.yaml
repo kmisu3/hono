@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issue作成"
+  short_description: "Issue Formに沿ったIssueを準備・作成"
+  default_prompt: "変更内容に合うIssue Formを選び、Issueを準備してください。"

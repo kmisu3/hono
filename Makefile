@@ -27,6 +27,10 @@ reset: ## DBボリュームごと初期化して再起動
 logs: ## API のログを追従表示
 	docker compose logs -f api
 
+.PHONY: docs
+docs: ## OpenAPI仕様書UIとモックサーバーを起動
+	docker compose up openapi mock
+
 .PHONY: shell
 shell: ## API コンテナへシェルで入る
 	docker compose exec api sh

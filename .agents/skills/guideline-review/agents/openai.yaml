@@ -1,0 +1,4 @@
+interface:
+  display_name: "ガイドライン準拠レビュー"
+  short_description: "設計・DB・OpenAPI・テスト方針への準拠を確認"
+  default_prompt: "現在の変更がリポジトリのガイドラインに沿っているかレビューしてください。"

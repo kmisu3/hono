@@ -1,20 +1,23 @@
 import { zValidator } from '@hono/zod-validator'
-import { Hono } from 'hono'
+import { type Context, Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
 import { secureHeaders } from 'hono/secure-headers'
 import { z } from 'zod'
 import type { TodoRepository } from './features/todos/repository.js'
 
-const createTodoSchema = z.object({
-  title: z.string().trim().min(1).max(100),
-})
+const createTodoSchema = z
+  .object({
+    title: z.string().trim().min(1).max(100),
+  })
+  .strict()
 
 const updateTodoSchema = z
   .object({
     title: z.string().trim().min(1).max(100).optional(),
     completed: z.boolean().optional(),
   })
+  .strict()
   .refine(
     (value) => value.title !== undefined || value.completed !== undefined,
     {
@@ -25,6 +28,12 @@ const updateTodoSchema = z
 const todoParamSchema = z.object({
   id: z.coerce.number().int().positive(),
 })
+
+const validationHook = (result: { success: boolean }, c: Context) => {
+  if (!result.success) {
+    return c.json({ error: 'Invalid request' }, 400)
+  }
+}
 
 export const createApp = (todoRepository: TodoRepository) => {
   const app = new Hono()
@@ -46,24 +55,32 @@ export const createApp = (todoRepository: TodoRepository) => {
     c.json({ data: await todoRepository.findAll() }),
   )
 
-  app.get('/api/todos/:id', zValidator('param', todoParamSchema), async (c) => {
-    const { id } = c.req.valid('param')
-    const todo = await todoRepository.findById(id)
-    return todo
-      ? c.json({ data: todo })
-      : c.json({ error: 'Todo not found' }, 404)
-  })
+  app.get(
+    '/api/todos/:id',
+    zValidator('param', todoParamSchema, validationHook),
+    async (c) => {
+      const { id } = c.req.valid('param')
+      const todo = await todoRepository.findById(id)
+      return todo
+        ? c.json({ data: todo })
+        : c.json({ error: 'Todo not found' }, 404)
+    },
+  )
 
-  app.post('/api/todos', zValidator('json', createTodoSchema), async (c) => {
-    const input = c.req.valid('json')
-    const todo = await todoRepository.create(input.title)
-    return c.json({ data: todo }, 201)
-  })
+  app.post(
+    '/api/todos',
+    zValidator('json', createTodoSchema, validationHook),
+    async (c) => {
+      const input = c.req.valid('json')
+      const todo = await todoRepository.create(input.title)
+      return c.json({ data: todo }, 201)
+    },
+  )
 
   app.patch(
     '/api/todos/:id',
-    zValidator('param', todoParamSchema),
-    zValidator('json', updateTodoSchema),
+    zValidator('param', todoParamSchema, validationHook),
+    zValidator('json', updateTodoSchema, validationHook),
     async (c) => {
       const { id } = c.req.valid('param')
       const todo = await todoRepository.update(id, c.req.valid('json'))
@@ -75,7 +92,7 @@ export const createApp = (todoRepository: TodoRepository) => {
 
   app.delete(
     '/api/todos/:id',
-    zValidator('param', todoParamSchema),
+    zValidator('param', todoParamSchema, validationHook),
     async (c) => {
       const { id } = c.req.valid('param')
       const deleted = await todoRepository.delete(id)
