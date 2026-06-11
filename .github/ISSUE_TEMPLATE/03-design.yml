@@ -1,6 +1,6 @@
 name: 設計・アーキテクチャ検討
 description: UI、API、データモデル、技術方針などの検討。
-title: "[設計]: "
+title: ""
 labels: ["作業:設計"]
 body:
   - type: textarea

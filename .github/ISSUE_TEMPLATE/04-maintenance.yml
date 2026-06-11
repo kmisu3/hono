@@ -1,6 +1,6 @@
 name: 保守・リファクタリング
 description: コード、依存関係、ツール、開発環境などの保守・改善。
-title: "[保守]: "
+title: ""
 labels: ["作業:保守"]
 body:
   - type: textarea

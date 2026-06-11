@@ -1,6 +1,6 @@
 name: その他のタスク
 description: 調査、ドキュメント、運用、調整などの作業。
-title: "[タスク]: "
+title: ""
 labels: ["作業:その他"]
 body:
   - type: textarea

@@ -1,6 +1,6 @@
 name: 新規実装・機能改善
 description: 新規機能の実装、既存機能の変更・改善。
-title: "[機能]: "
+title: ""
 labels: ["作業:機能追加"]
 body:
   - type: textarea
