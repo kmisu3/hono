@@ -1,7 +1,7 @@
 ---
 name: issue-branch
 description: GitHub Issueを元に、Issue番号と英語の短い名前を含む作業ブランチを作成する。Issue着手時やIssue番号からブランチを作ることを明示された依頼で使用。
-allowed-tools: Bash(git status *) Bash(git branch *) Bash(git switch *) Bash(git fetch *) Bash(gh issue view *)
+allowed-tools: Bash(git status *) Bash(git branch *) Bash(git switch *) Bash(git fetch *) Bash(git remote *) Bash(git symbolic-ref *) Bash(gh issue view *)
 ---
 
 Issueに着手するためのローカルブランチを作成する。
@@ -18,7 +18,13 @@ Issueに着手するためのローカルブランチを作成する。
    - 例: `123-add-login-page`
    - Issue番号やslugを省略しない
 6. 同名のローカル・リモートブランチがないことを確認する。
-7. デフォルトブランチを基点に`git switch -c <ブランチ名>`で作成する。
-8. 作成したブランチ名、基点、Issue URLまたはIssue番号を報告する。
+7. デフォルトブランチを特定する。
+   - `origin/HEAD`が利用できる場合は参照先を使用
+   - 利用できない場合は`git remote show origin`で確認
+   - 特定できない場合は推測で進めない
+8. `git fetch origin <デフォルトブランチ>`で最新状態を取得する。取得できない場合は、
+   ローカルのデフォルトブランチを基点にしてよいか確認する。
+9. `git switch --no-track -c <ブランチ名> origin/<デフォルトブランチ>`で作成する。
+10. 作成したブランチ名、基点、Issue URLまたはIssue番号を報告する。
 
 ユーザーが明示しない限り、push、Issue更新、コミットは実行しない。

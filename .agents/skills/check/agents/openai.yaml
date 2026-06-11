@@ -1,0 +1,4 @@
+interface:
+  display_name: "標準チェック"
+  short_description: "lint・テスト・ビルド・差分チェックを実行"
+  default_prompt: "リポジトリ標準のチェックを実行してください。"

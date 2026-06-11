@@ -13,6 +13,7 @@ Issueへ紐付くPull Requestを準備する。
    - マージ時に閉じる: `Closes #<番号>`
    - 関連付けのみ: `Refs #<番号>`
 6. PRタイトルはコミットとIssueの内容から簡潔な日本語で作成する。
+7. 下書きはPRタイトルと、`.github/PULL_REQUEST_TEMPLATE.md`に一致する本文を提示する。
 
 ユーザーがPR作成を明示した場合だけ、次を実行する。
 

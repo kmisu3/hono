@@ -1,0 +1,4 @@
+interface:
+  display_name: "コミット"
+  short_description: "対象差分を日本語メッセージで安全にコミット"
+  default_prompt: "現在のタスクに関係する変更を確認してコミットしてください。"

@@ -1,8 +1,6 @@
 ---
 name: commit
-description: 現在の変更を確認・検証し、対象ファイルのみをConventional Commits形式の日本語メッセージでコミット。手動コミット時に使用。
-argument-hint: "[コミット内容]"
-disable-model-invocation: true
+description: 現在の変更を確認・検証し、対象ファイルのみをConventional Commits形式の日本語メッセージでコミットする。ユーザーがコミットを明示した場合に使用。
 allowed-tools: Bash(git status *) Bash(git diff *) Bash(git add *) Bash(git commit *) Bash(npm run commit:check)
 ---
 

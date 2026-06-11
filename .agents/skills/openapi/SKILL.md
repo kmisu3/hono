@@ -16,8 +16,9 @@ Honoの実装と`openapi/openapi.yaml`を同期する。
 5. 実装に存在しない仕様や、仕様に存在しない公開APIがないか確認する。
 6. `docker compose config --quiet`でCompose設定を確認する。
 7. `docker compose up -d openapi mock`でSwagger UIとPrismを起動する。
-8. Swagger UIが仕様書を配信できることと、Prismが主要な正常系・異常系を返すことを確認する。
-9. API実装も変更した場合は`npm run check`を実行する。
+8. Prismの起動完了をログで確認する。初回起動は時間がかかるため、応答前の接続失敗だけで異常と判断しない。
+9. Swagger UIが仕様書を配信できることと、Prismが主要な正常系・異常系を返すことを確認する。
+10. API実装も変更した場合は`npm run check`を実行する。
 
 仕様書だけを変更する依頼では、API実装を推測で変更しない。
 仕様書と実装の差異、未確認事項、実行した検証を報告する。

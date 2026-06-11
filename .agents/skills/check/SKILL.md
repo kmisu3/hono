@@ -1,7 +1,6 @@
 ---
 name: check
-description: リポジトリ標準のテスト、ビルド、差分チェックを実行。変更内容の検証時に使用。
-disable-model-invocation: true
+description: リポジトリ標準のテスト、ビルド、差分チェックを実行する。ユーザーがチェック、検証、テスト一式の実行を明示した場合に使用。
 allowed-tools: Bash(npm run check)
 ---
 
