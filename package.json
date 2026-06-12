@@ -17,6 +17,7 @@
     "format": "biome format --write src drizzle.config.ts vitest.config.ts biome.json",
     "check": "npm run lint && npm test && npm run build && git diff --check && git diff --cached --check",
     "commit:check": "sh scripts/commit-check.sh",
+    "labels:sync": "node scripts/sync-labels.mjs",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx src/db/mysql/seed.ts",

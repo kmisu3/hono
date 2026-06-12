@@ -1,19 +1,8 @@
 name: 新規実装・機能改善
 description: 新規機能の実装、既存機能の変更・改善。
-title: "[機能]: "
-labels: ["type:feature"]
+title: ""
+labels: ["作業:機能追加"]
 body:
-  - type: dropdown
-    id: area
-    attributes:
-      label: 対象領域
-      description: 主な対象領域。作成後に対応するareaラベルを付与。
-      options:
-        - フロントエンド（area:frontend）
-        - バックエンド（area:backend）
-        - 共通（area:common）
-    validations:
-      required: true
   - type: textarea
     id: summary
     attributes:
@@ -38,9 +27,9 @@ body:
     id: approach
     attributes:
       label: 実装メモ
-      description: 画面・UI、API、対象範囲、実装案、注意点など。
+      description: 対象範囲、実装案、注意点など。必要な場合は機能設計書・ADRも記載。
   - type: textarea
     id: references
     attributes:
       label: 参考情報
-      description: 関連Issue、設計資料、ドキュメントなど。
+      description: 関連Issue、機能設計書、ADR、ドキュメントなど。

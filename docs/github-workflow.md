@@ -4,23 +4,43 @@
 
 - 作業内容と完了条件はIssueで管理
 - 作業ブランチとPull RequestはIssueへ紐付け
-- 作業種類は`type:*`、対象領域は`area:*`ラベルで管理
+- 作業内容は`作業:*`、変更対象は`対象:*`ラベルで管理
 
 ## Issue
 
-作業内容に合うIssue Formを選択し、対象領域を必ず指定する。
+作業内容に合うIssue Formを選択する。変更対象はIssue本文に重複して記載せず、
+`対象:*`ラベルだけで管理する。
 
 | ラベル | 用途 |
 | --- | --- |
-| `area:frontend` | 画面、UI、ブラウザ上の処理 |
-| `area:backend` | API、DB、サーバー上の処理 |
-| `area:common` | 開発環境、CI、ドキュメント、複数領域にまたがる変更 |
+| `対象:フロントエンド` | 画面、UI、ブラウザ上の処理 |
+| `対象:バックエンド` | API、DB、サーバー上の処理 |
+| `対象:共通` | 開発環境、CI、ドキュメント、複数対象にまたがる変更 |
 
-Issue Formのドロップダウン選択だけではGitHubラベルを動的に付与できないため、
-Issue作成後に選択した`area:*`ラベルを付与する。`issue` Skillで作成する場合は、
-選択領域に対応するラベルも指定する。
+Issue作成後に変更内容に合う`対象:*`ラベルを付与する。`issue` Skillで作成する場合は、
+依頼内容から変更対象を判断してラベルを指定する。
 
-`type:*`ラベルは選択したIssue Formから自動付与する。
+`作業:*`ラベルは選択したIssue Formから自動付与する。
+
+機能設計書・ADRが必要な変更では、`docs/design-documents.md`の基準に従い、
+作成・更新をIssueの完了条件へ含める。小さな変更では形式的な設計資料を作成しない。
+
+ラベルの名前、色、説明は`.github/labels.json`で管理する。新規リポジトリへ導入する場合や
+定義を変更した場合は、`labels` Skillまたは次のコマンドで作成・更新する。
+
+```text
+npm run labels:sync -- --dry-run
+npm run labels:sync
+```
+
+別リポジトリへ同期する場合だけ対象を指定する。
+
+```text
+npm run labels:sync -- --repo <owner/repo> --dry-run
+npm run labels:sync -- --repo <owner/repo>
+```
+
+同期処理は定義済みラベルを作成・更新し、定義にない既存ラベルは削除しない。
 
 ## ブランチ
 

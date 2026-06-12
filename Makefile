@@ -74,3 +74,7 @@ test: ## テストを実行
 .PHONY: check
 check: ## lint・test・build・差分チェックを一括実行
 	npm run check
+
+.PHONY: labels
+labels: ## GitHubラベルを現在のリポジトリへ同期
+	npm run labels:sync
