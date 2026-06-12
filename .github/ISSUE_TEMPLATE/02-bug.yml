@@ -1,6 +1,5 @@
 name: 不具合対応
 description: 不具合や想定外の動作への対応。
-title: ""
 labels: ["作業:不具合対応"]
 body:
   - type: textarea
