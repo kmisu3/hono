@@ -14,6 +14,7 @@
 - ビルド: `npm run build`
 - Lint（Biome）: `npm run lint`（自動修正は`npm run lint:fix`）
 - 一括チェック: `npm run check`
+- Issue Form検証: `npm run issues:check`
 - 手動コミット前チェック: `npm run commit:check`
 - DB: 生成`npm run db:generate` / 適用`npm run db:migrate` / 投入`npm run db:seed`
 - よく使う操作はMakefileに集約（`make help`で一覧）

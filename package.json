@@ -15,8 +15,9 @@
     "lint": "biome check src drizzle.config.ts vitest.config.ts biome.json",
     "lint:fix": "biome check --write src drizzle.config.ts vitest.config.ts biome.json",
     "format": "biome format --write src drizzle.config.ts vitest.config.ts biome.json",
-    "check": "npm run lint && npm test && npm run build && git diff --check && git diff --cached --check",
+    "check": "npm run lint && npm run issues:check && npm test && npm run build && git diff --check && git diff --cached --check",
     "commit:check": "sh scripts/commit-check.sh",
+    "issues:check": "node scripts/check-issue-forms.mjs",
     "labels:sync": "node scripts/sync-labels.mjs",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
@@ -38,6 +39,7 @@
     "drizzle-kit": "^0.31.10",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.8"
+    "vitest": "^4.1.8",
+    "yaml": "^2.9.0"
   }
 }

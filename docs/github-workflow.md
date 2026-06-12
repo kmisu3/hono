@@ -25,6 +25,9 @@ Issue作成後に変更内容に合う`対象:*`ラベルを付与する。`issu
 機能設計書・ADRが必要な変更では、`docs/design-documents.md`の基準に従い、
 作成・更新をIssueの完了条件へ含める。小さな変更では形式的な設計資料を作成しない。
 
+Issue Formを変更した場合は`npm run issues:check`を実行する。タイトル接頭辞を使用しない場合、
+`title: ""`はGitHubで無効になるため、`title`自体を記載しない。
+
 ラベルの名前、色、説明は`.github/labels.json`で管理する。新規リポジトリへ導入する場合や
 定義を変更した場合は、`labels` Skillまたは次のコマンドで作成・更新する。
 
