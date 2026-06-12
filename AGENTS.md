@@ -28,6 +28,7 @@
 - ルートハンドラーとJSONレスポンスは簡潔で一貫した形を維持。
 - APIの構成・責務分離は`docs/architecture.md`に従う。
 - DBの実装・マイグレーション・テストは`docs/database.md`に従う。
+- MySQLスキーマ変更時は`docs/table-definitions`の対応する定義書を更新する。
 - APIの追加・変更時は`openapi/openapi.yaml`も更新し、`docs/openapi.md`に従う。
 - Issue・ブランチ・Pull Requestの運用は`docs/github-workflow.md`に従う。
 - 秘密情報、`.env`、生成された`dist/`、`node_modules/`はコミット対象外。
@@ -100,3 +101,4 @@
 - `pr`: Pull Requestテンプレートに沿ったPRの下書き・作成
 - `guideline-review`: リポジトリ固有ガイドラインへの準拠レビュー
 - `security-review`: OWASP API Top 10・ASVS観点のセキュリティレビュー
+- `table-definition`: テーブル定義書の作成・更新・レビュー
