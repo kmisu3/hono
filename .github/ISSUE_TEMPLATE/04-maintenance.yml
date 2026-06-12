@@ -27,7 +27,7 @@ body:
     id: notes
     attributes:
       label: 対応メモ
-      description: 対象範囲、対応案、影響、注意点など。
+      description: 対象範囲、対応案、影響、注意点など。共通方針を変える場合はADRも記載。
   - type: textarea
     id: references
     attributes:

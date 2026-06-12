@@ -27,9 +27,9 @@ body:
     id: approach
     attributes:
       label: 実装メモ
-      description: 画面・UI、API、対象範囲、実装案、注意点など。
+      description: 対象範囲、実装案、注意点など。必要な場合は機能設計書・ADRも記載。
   - type: textarea
     id: references
     attributes:
       label: 参考情報
-      description: 関連Issue、設計資料、ドキュメントなど。
+      description: 関連Issue、機能設計書、ADR、ドキュメントなど。

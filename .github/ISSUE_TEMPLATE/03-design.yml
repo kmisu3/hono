@@ -24,12 +24,12 @@ body:
     id: options
     attributes:
       label: 検討内容
-      description: 選択肢、メリット・デメリット、判断理由など。
+      description: 選択肢、メリット・デメリット、判断理由、機能設計書・ADRの要否など。
   - type: textarea
     id: completion
     attributes:
       label: 完了条件
-      description: 完了と判断する条件や成果物。
+      description: 完了と判断する条件や、機能設計書・ADRなど必要な成果物。
       placeholder: |
         - [ ] ...
         - [ ] ...
@@ -37,4 +37,4 @@ body:
     id: references
     attributes:
       label: 参考情報
-      description: 関連Issue、図、検証結果、ドキュメントなど。
+      description: 関連Issue、機能設計書、ADR、図、検証結果、ドキュメントなど。

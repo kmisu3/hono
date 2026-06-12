@@ -27,6 +27,7 @@
 - コードはBiomeのlint・整形に従う（`npm run lint`がCIでも実行される）。
 - ルートハンドラーとJSONレスポンスは簡潔で一貫した形を維持。
 - APIの構成・責務分離は`docs/architecture.md`に従う。
+- 機能設計書・ADRの要否と更新は`docs/design-documents.md`に従う。
 - DBの実装・マイグレーション・テストは`docs/database.md`に従う。
 - MySQLスキーマ変更時は`docs/table-definitions`の対応する定義書を更新する。
 - APIの追加・変更時は`openapi/openapi.yaml`も更新し、`docs/openapi.md`に従う。
@@ -102,3 +103,4 @@
 - `guideline-review`: リポジトリ固有ガイドラインへの準拠レビュー
 - `security-review`: OWASP API Top 10・ASVS観点のセキュリティレビュー
 - `table-definition`: テーブル定義書の作成・更新・レビュー
+- `design-doc`: 機能設計書・ADRの要否判断、作成・更新・レビュー
