@@ -26,6 +26,13 @@ Issue作成後に変更内容に合う`対象:*`ラベルを付与する。`issu
 定義を変更した場合は、`labels` Skillまたは次のコマンドで作成・更新する。
 
 ```text
+npm run labels:sync -- --dry-run
+npm run labels:sync
+```
+
+別リポジトリへ同期する場合だけ対象を指定する。
+
+```text
 npm run labels:sync -- --repo <owner/repo> --dry-run
 npm run labels:sync -- --repo <owner/repo>
 ```
